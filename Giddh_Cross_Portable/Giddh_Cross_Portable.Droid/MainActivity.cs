@@ -10,7 +10,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Giddh_Cross_Portable.Droid
 {
-    [Activity(Label = "Giddh_Cross_Portable", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Giddh Manager", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : AndroidActivity
     {
         protected override void OnCreate(Bundle bundle)

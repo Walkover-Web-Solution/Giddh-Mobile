@@ -95,9 +95,9 @@ namespace Giddh_Cross_Portable
                 //});
             }
             else {
-                //var loginPage = new LoginPage();
-                //_NavPage = new NavigationPage(loginPage);
-                DependencyService.Get<IPageController>().GetLoginPage(_NavPage);
+                var loginPage = new LoginPage();
+                _NavPage = new NavigationPage(loginPage);
+                //DependencyService.Get<IPageController>().GetLoginPage(_NavPage);
             }
 
             return _NavPage;

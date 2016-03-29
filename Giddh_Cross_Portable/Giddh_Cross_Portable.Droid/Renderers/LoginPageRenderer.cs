@@ -40,16 +40,31 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             auth.Completed += (sender, eventArgs) => {
                 if (eventArgs.IsAuthenticated)
                 {
-                    App.Instance.SuccessfulLoginAction.Invoke();
-                    // Use eventArgs.Account to do wonderful things
-                    App.Instance.SaveToken(eventArgs.Account.Properties["access_token"]);
+                    try
+                    {
+                        App.Instance.SuccessfulLoginAction.Invoke();
+                        // Use eventArgs.Account to do wonderful things
+                        App.Instance.SaveToken(eventArgs.Account.Properties["access_token"]);
+                        //activity.StartActivity(typeof(ProfilePage));
+                    }
+                    catch(Exception ex)
+                    { }
                 }
                 else {
                     // The user cancelled
                 }
             };
 
-            activity.StartActivity(auth.GetUI(activity));
+            try
+            {
+                var intent = auth.GetUI(activity);
+                //activity.StartActivity(auth.GetUI(activity));
+                activity.StartActivity(intent);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

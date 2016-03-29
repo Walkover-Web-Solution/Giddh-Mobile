@@ -1,0 +1,38 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Giddh_Cross_Portable.WinPhone" EntryPointType="Giddh_Cross_Portable.WinPhone.App" RuntimeVersion="6.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="Giddh_Cross_Portable.WinPhone" Source="Giddh_Cross_Portable.WinPhone.dll" />
+    <AssemblyPart x:Name="ExifLib" Source="ExifLib.dll" />
+    <AssemblyPart x:Name="Giddh_Cross_Portable" Source="Giddh_Cross_Portable.dll" />
+    <AssemblyPart x:Name="Google.Apis.Auth" Source="Google.Apis.Auth.dll" />
+    <AssemblyPart x:Name="Google.Apis.Auth.PlatformServices" Source="Google.Apis.Auth.PlatformServices.dll" />
+    <AssemblyPart x:Name="Google.Apis.Core" Source="Google.Apis.Core.dll" />
+    <AssemblyPart x:Name="Google.Apis" Source="Google.Apis.dll" />
+    <AssemblyPart x:Name="Google.Apis.Oauth2.v1" Source="Google.Apis.Oauth2.v1.dll" />
+    <AssemblyPart x:Name="Google.Apis.PlatformServices" Source="Google.Apis.PlatformServices.dll" />
+    <AssemblyPart x:Name="Google.Apis.Plus.v1" Source="Google.Apis.Plus.v1.dll" />
+    <AssemblyPart x:Name="Hammock.WindowsPhone.Mango" Source="Hammock.WindowsPhone.Mango.dll" />
+    <AssemblyPart x:Name="ICSharpCode.SharpZipLib.WindowsPhone" Source="ICSharpCode.SharpZipLib.WindowsPhone.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks" Source="Microsoft.Threading.Tasks.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks.Extensions" Source="Microsoft.Threading.Tasks.Extensions.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks.Extensions.Phone" Source="Microsoft.Threading.Tasks.Extensions.Phone.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
+    <AssemblyPart x:Name="Plugin.Settings.Abstractions" Source="Plugin.Settings.Abstractions.dll" />
+    <AssemblyPart x:Name="Plugin.Settings" Source="Plugin.Settings.dll" />
+    <AssemblyPart x:Name="System.Net.Http" Source="System.Net.Http.dll" />
+    <AssemblyPart x:Name="System.Net.Http.Extensions" Source="System.Net.Http.Extensions.dll" />
+    <AssemblyPart x:Name="System.Net.Http.Primitives" Source="System.Net.Http.Primitives.dll" />
+    <AssemblyPart x:Name="TweetSharp.WindowsPhone.Mango" Source="TweetSharp.WindowsPhone.Mango.dll" />
+    <AssemblyPart x:Name="Xamarin.Forms.Core" Source="Xamarin.Forms.Core.dll" />
+    <AssemblyPart x:Name="Xamarin.Forms.Platform" Source="Xamarin.Forms.Platform.dll" />
+    <AssemblyPart x:Name="Xamarin.Forms.Platform.WP8" Source="Xamarin.Forms.Platform.WP8.dll" />
+    <AssemblyPart x:Name="Xamarin.Forms.Xaml" Source="Xamarin.Forms.Xaml.dll" />
+    <AssemblyPart x:Name="XLabs.Core" Source="XLabs.Core.dll" />
+    <AssemblyPart x:Name="XLabs.Ioc" Source="XLabs.Ioc.dll" />
+    <AssemblyPart x:Name="XLabs.Platform" Source="XLabs.Platform.dll" />
+    <AssemblyPart x:Name="XLabs.Platform.WP8" Source="XLabs.Platform.WP8.dll" />
+    <AssemblyPart x:Name="XLabs.Serialization" Source="XLabs.Serialization.dll" />
+    <AssemblyPart x:Name="Zlib.Portable" Source="Zlib.Portable.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
+  </Deployment.Parts>
+</Deployment>

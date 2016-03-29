@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>RAVIS</Machine>
+    <WindowsUser>Priyank</WindowsUser>
+    <TargetPlatformIdentifier>Windows Phone</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
+    <SolutionConfiguration>Release|ARM</SolutionConfiguration>
+    <PackageArchitecture>arm</PackageArchitecture>
+    <PackageIdentityName>2e42a4ca-32cd-4f6e-80a8-51934880c3ad</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\obj\ARM\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Bin\ARM\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Bin\ARM\Release\Giddh_Cross_Portable.WinPhone.dll">
+      <PackagePath>Giddh_Cross_Portable.WinPhone.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable\bin\Release\Giddh_Cross_Portable.dll">
+      <PackagePath>Giddh_Cross_Portable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll">
+      <PackagePath>ExifLib.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Auth.1.9.0\lib\wp8\Google.Apis.Auth.dll">
+      <PackagePath>Google.Apis.Auth.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Auth.1.9.0\lib\wp8\Google.Apis.Auth.PlatformServices.dll">
+      <PackagePath>Google.Apis.Auth.PlatformServices.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Core.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll">
+      <PackagePath>Google.Apis.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.1.9.0\lib\wp8\Google.Apis.dll">
+      <PackagePath>Google.Apis.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Oauth2.v1.1.9.0.860\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Oauth2.v1.dll">
+      <PackagePath>Google.Apis.Oauth2.v1.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.1.9.0\lib\wp8\Google.Apis.PlatformServices.dll">
+      <PackagePath>Google.Apis.PlatformServices.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Plus.v1.1.9.0.2270\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Plus.v1.dll">
+      <PackagePath>Google.Apis.Plus.v1.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\TweetSharp.2.3.1\lib\sl4-wp71\Hammock.WindowsPhone.Mango.dll">
+      <PackagePath>Hammock.WindowsPhone.Mango.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\TweetSharp.2.3.1\lib\sl4-wp71\ICSharpCode.SharpZipLib.WindowsPhone.dll">
+      <PackagePath>ICSharpCode.SharpZipLib.WindowsPhone.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll">
+      <PackagePath>Microsoft.Phone.Controls.Toolkit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.dll">
+      <PackagePath>Microsoft.Threading.Tasks.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll">
+      <PackagePath>Microsoft.Threading.Tasks.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll">
+      <PackagePath>Microsoft.Threading.Tasks.Extensions.Phone.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xam.Plugins.Settings.2.1.0\lib\wp8\Plugin.Settings.Abstractions.dll">
+      <PackagePath>Plugin.Settings.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xam.Plugins.Settings.2.1.0\lib\wp8\Plugin.Settings.dll">
+      <PackagePath>Plugin.Settings.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.dll">
+      <PackagePath>System.Net.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll">
+      <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll">
+      <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\TweetSharp.2.3.1\lib\sl4-wp71\TweetSharp.WindowsPhone.Mango.dll">
+      <PackagePath>TweetSharp.WindowsPhone.Mango.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Core.dll">
+      <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Platform.dll">
+      <PackagePath>Xamarin.Forms.Platform.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Platform.WP8.dll">
+      <PackagePath>Xamarin.Forms.Platform.WP8.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Xaml.dll">
+      <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Core.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll">
+      <PackagePath>XLabs.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.IoC.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll">
+      <PackagePath>XLabs.Ioc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Platform.2.0.5782\lib\wp8\XLabs.Platform.dll">
+      <PackagePath>XLabs.Platform.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Platform.2.0.5782\lib\wp8\XLabs.Platform.WP8.dll">
+      <PackagePath>XLabs.Platform.WP8.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll">
+      <PackagePath>XLabs.Serialization.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll">
+      <PackagePath>Zlib.Portable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\System.Windows.Interactivity.dll">
+      <PackagePath>System.Windows.Interactivity.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ar-SA\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ar-SA\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\az-Latn-AZ\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>az-Latn-AZ\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\be-BY\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>be-BY\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\bg-BG\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>bg-BG\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ca-ES\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ca-ES\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\cs-CZ\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>cs-CZ\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\da-DK\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>da-DK\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\de-DE\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>de-DE\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\el-GR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>el-GR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\en-GB\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>en-GB\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\es-ES\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>es-ES\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\es-MX\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>es-MX\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\et-EE\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>et-EE\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\fa-IR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>fa-IR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\fi-FI\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>fi-FI\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\fil-PH\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>fil-PH\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\fr-CA\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>fr-CA\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\fr-FR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>fr-FR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\he-IL\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>he-IL\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\hi-IN\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>hi-IN\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\hr-HR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>hr-HR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\hu-HU\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>hu-HU\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\id-ID\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>id-ID\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\it-IT\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>it-IT\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ja-JP\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ja-JP\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\kk-KZ\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>kk-KZ\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ko-KR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ko-KR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\lt-LT\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>lt-LT\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\lv-LV\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>lv-LV\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\mk-MK\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>mk-MK\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ms-MY\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ms-MY\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\nb-NO\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>nb-NO\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\nl-NL\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>nl-NL\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\pl-PL\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>pl-PL\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\pt-BR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>pt-BR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\pt-PT\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>pt-PT\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ro-RO\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ro-RO\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\ru-RU\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>ru-RU\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\sk-SK\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>sk-SK\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\sl-SI\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>sl-SI\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\sq-AL\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>sq-AL\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\sr-Latn-CS\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>sr-Latn-CS\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\sv-SE\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>sv-SE\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\th-TH\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>th-TH\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\tr-TR\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>tr-TR\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\uk-UA\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>uk-UA\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\uz-Latn-UZ\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>uz-Latn-UZ\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\vi-VN\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>vi-VN\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\zh-CN\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>zh-CN\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\WPtoolkit.4.2013.08.16\lib\wp8\zh-TW\Microsoft.Phone.Controls.Toolkit.resources.dll">
+      <PackagePath>zh-TW\Microsoft.Phone.Controls.Toolkit.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\de\System.Windows.Interactivity.resources.dll">
+      <PackagePath>de\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\en\System.Windows.Interactivity.resources.dll">
+      <PackagePath>en\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\es\System.Windows.Interactivity.resources.dll">
+      <PackagePath>es\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\fr\System.Windows.Interactivity.resources.dll">
+      <PackagePath>fr\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\it\System.Windows.Interactivity.resources.dll">
+      <PackagePath>it\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\ja\System.Windows.Interactivity.resources.dll">
+      <PackagePath>ja\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\ko\System.Windows.Interactivity.resources.dll">
+      <PackagePath>ko\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\ru\System.Windows.Interactivity.resources.dll">
+      <PackagePath>ru\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\zh-Hans\System.Windows.Interactivity.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\zh-Hant\System.Windows.Interactivity.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Interactivity.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Platform.2.0.5782\lib\wp8\XLabs.Platform.WinRT.winmd">
+      <PackagePath>XLabs.Platform.WinRT.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.1.9.0\lib\wp8\Google.Apis.xml">
+      <PackagePath>Google.Apis.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Auth.1.9.0\lib\wp8\Google.Apis.Auth.xml">
+      <PackagePath>Google.Apis.Auth.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Auth.1.9.0\lib\wp8\Google.Apis.Auth.PlatformServices.xml">
+      <PackagePath>Google.Apis.Auth.PlatformServices.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Core.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.xml">
+      <PackagePath>Google.Apis.Core.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Oauth2.v1.1.9.0.860\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Oauth2.v1.xml">
+      <PackagePath>Google.Apis.Oauth2.v1.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.1.9.0\lib\wp8\Google.Apis.PlatformServices.xml">
+      <PackagePath>Google.Apis.PlatformServices.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Google.Apis.Plus.v1.1.9.0.2270\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Plus.v1.xml">
+      <PackagePath>Google.Apis.Plus.v1.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.xml">
+      <PackagePath>Microsoft.Threading.Tasks.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.xml">
+      <PackagePath>Microsoft.Threading.Tasks.Extensions.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.xml">
+      <PackagePath>Microsoft.Threading.Tasks.Extensions.Phone.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.xml">
+      <PackagePath>Newtonsoft.Json.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xam.Plugins.Settings.2.1.0\lib\wp8\Plugin.Settings.xml">
+      <PackagePath>Plugin.Settings.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xam.Plugins.Settings.2.1.0\lib\wp8\Plugin.Settings.Abstractions.xml">
+      <PackagePath>Plugin.Settings.Abstractions.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.xml">
+      <PackagePath>System.Net.Http.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.xml">
+      <PackagePath>System.Net.Http.Extensions.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.xml">
+      <PackagePath>System.Net.Http.Primitives.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Core.xml">
+      <PackagePath>Xamarin.Forms.Core.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Xamarin.Forms.2.0.1.6505\lib\WP80\Xamarin.Forms.Xaml.xml">
+      <PackagePath>Xamarin.Forms.Xaml.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Core.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.xml">
+      <PackagePath>XLabs.Core.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.IoC.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.xml">
+      <PackagePath>XLabs.Ioc.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Platform.2.0.5782\lib\wp8\XLabs.Platform.xml">
+      <PackagePath>XLabs.Platform.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Platform.2.0.5782\lib\wp8\XLabs.Platform.WP8.xml">
+      <PackagePath>XLabs.Platform.WP8.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.xml">
+      <PackagePath>XLabs.Serialization.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.xml">
+      <PackagePath>Zlib.Portable.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\BadgeLogo.png">
+      <PackagePath>Assets\BadgeLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\SquareTile150x150.png">
+      <PackagePath>Assets\SquareTile150x150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\SquareTile71x71.png">
+      <PackagePath>Assets\SquareTile71x71.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\AlignmentGrid.png">
+      <PackagePath>Assets\AlignmentGrid.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\ApplicationIcon.png">
+      <PackagePath>Assets\ApplicationIcon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Tiles\FlipCycleTileLarge.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileLarge.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Tiles\FlipCycleTileMedium.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileMedium.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Tiles\FlipCycleTileSmall.png">
+      <PackagePath>Assets\Tiles\FlipCycleTileSmall.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Tiles\IconicTileMediumLarge.png">
+      <PackagePath>Assets\Tiles\IconicTileMediumLarge.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Assets\Tiles\IconicTileSmall.png">
+      <PackagePath>Assets\Tiles\IconicTileSmall.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\SplashScreenImage.png">
+      <PackagePath>SplashScreenImage.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Toolkit.Content\ApplicationBar.Add.png">
+      <PackagePath>Toolkit.Content\ApplicationBar.Add.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Toolkit.Content\ApplicationBar.Cancel.png">
+      <PackagePath>Toolkit.Content\ApplicationBar.Cancel.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Toolkit.Content\ApplicationBar.Check.png">
+      <PackagePath>Toolkit.Content\ApplicationBar.Check.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Toolkit.Content\ApplicationBar.Delete.png">
+      <PackagePath>Toolkit.Content\ApplicationBar.Delete.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Toolkit.Content\ApplicationBar.Select.png">
+      <PackagePath>Toolkit.Content\ApplicationBar.Select.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable\Assets\logout.png">
+      <PackagePath>Giddh_Cross_Portable\Assets\logout.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\README_FIRST.txt">
+      <PackagePath>README_FIRST.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\SplashScreenImage.jpg">
+      <PackagePath>SplashScreenImage.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Bin\ARM\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

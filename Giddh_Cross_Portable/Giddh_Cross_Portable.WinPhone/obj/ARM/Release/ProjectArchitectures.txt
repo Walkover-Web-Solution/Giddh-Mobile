@@ -1,0 +1,2 @@
+C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.WinPhone\Giddh_Cross_Portable.WinPhone.csproj;arm
+C:\Users\Priyank\Documents\Visual Studio 2015\Projects\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable\Giddh_Cross_Portable.csproj;neutral

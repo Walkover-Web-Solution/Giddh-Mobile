@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Giddh_Cross_Portable.WinPhone.Views.loginPage" BackgroundColor="White">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="70"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>    
+    <Label x:Name="loadingLabel" Text="Loading please wait..." Grid.Row="1" VerticalOptions="Start" IsVisible="False" TextColor="Black"/>
+    <Image Source="Assets/WideLogo.scale-240.png" Grid.Row="0" HorizontalOptions="Start"/>
+    <WebView x:Name="loginBrowserControl" Grid.Row="2" Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Navigating="loginBrowserControl_Navigating" IsVisible="False"/>
+    <StackLayout x:Name="btnStack" Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+      <Button Text="Google" BorderWidth="0" BackgroundColor="#d34836" HorizontalOptions="FillAndExpand" Clicked="google_Clicked" HeightRequest="90"/>
+      <Button Text="Twitter" BorderWidth="0" BackgroundColor="#4099FF" HorizontalOptions="FillAndExpand" Clicked="twitter_Clicked" HeightRequest="90"/>
+    </StackLayout>
+  </Grid>
+</ContentPage>

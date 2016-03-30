@@ -14,14 +14,14 @@
             android:layout_height="wrap_content"
             android:text="Google"
             android:textColor="#fffff"
-    		android:background="#000000"
+    		android:background="#ea4335"
             android:textSize="18dp" />
 
          <Button
             android:id="@+id/tweeter_login"
             android:layout_width="fill_parent"
             android:textColor="#fffff"
-    		android:background="#000000"
+    		android:background="#55acee"
             android:layout_height="wrap_content"
             android:text="Twitter"
             android:textSize="18dp" />

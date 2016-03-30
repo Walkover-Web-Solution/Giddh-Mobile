@@ -30,11 +30,11 @@ namespace Giddh_Cross_Portable
                             _Instance = new App();
                             _Instance.OAuthSettings =
                                 new OAuthSettings(
-                                    clientId: "932165600137-9nd18nvvkq9uqnaffkh5b41u62jmhrl1.apps.googleusercontent.com",       // your OAuth2 client id 
+                                    clientId: "641015054140-3cl9c3kh18vctdjlrt9c8v0vs85dorv2.apps.googleusercontent.com",//"932165600137-9nd18nvvkq9uqnaffkh5b41u62jmhrl1.apps.googleusercontent.com",       // your OAuth2 client id 
                                     scope: "https://www.googleapis.com/auth/userinfo.email",  		// The scopes for the particular API you're accessing. The format for this will vary by API.
                                     authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	// the auth URL for the service
-                                    redirectUrl: "http://localhost",
-                                    clientSecret: "VmX7Zrg3vavZ2tOPP4jl3DYb",
+                                    redirectUrl: "http://localhost:8000",
+                                    clientSecret: "eWzLFEb_T9VrzFjgE40Bz6_l",//"VmX7Zrg3vavZ2tOPP4jl3DYb",
                                     refreshToken: "");   // the redirect URL for the service
 
                             _Instance.twitterOAuthSettings =

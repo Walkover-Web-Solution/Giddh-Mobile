@@ -23,15 +23,15 @@ namespace Giddh_Cross_Portable.Droid.useInterface
     {
         public void GetLoginPage(NavigationPage _NavPage)
         {
-            var loginPage = new LoginPage();
-            _NavPage = new NavigationPage(loginPage);
-            //loginPage lPage = new loginPage();
-            //if (_NavPage.Navigation.NavigationStack.Count > 0)
-            //{
-            //    _NavPage.Navigation.InsertPageBefore(new NavigationPage(lPage), _NavPage.CurrentPage);
-            //}
-            //else
-            //    _NavPage.Navigation.PushAsync(new NavigationPage(lPage));
+            //var loginPage = new LoginPage();
+            //_NavPage = new NavigationPage(loginPage);
+            LoginPage lPage = new LoginPage();
+            if (_NavPage.Navigation.NavigationStack.Count > 0)
+            {
+                _NavPage.Navigation.InsertPageBefore(new NavigationPage(lPage), _NavPage.CurrentPage);
+            }
+            else
+                _NavPage.Navigation.PushAsync(new NavigationPage(lPage));
         }
 
         public void GetProfilePage(NavigationPage _NavPage)

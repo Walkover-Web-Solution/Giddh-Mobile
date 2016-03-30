@@ -9,28 +9,22 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Giddh_Cross_Portable.Pages;
+using Giddh_Cross_Portable.Droid.useInterface;
+using Giddh_Cross_Portable.Interface;
 using Xamarin.Forms;
-using Giddh_Cross_Portable.Droid.Renderers;
 using Xamarin.Auth;
-using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer))]
+[assembly: Dependency(typeof(callAuth))]
 
-namespace Giddh_Cross_Portable.Droid.Renderers
+namespace Giddh_Cross_Portable.Droid.useInterface
 {
-    class LoginPageRenderer : PageRenderer
-    {        
-        protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
+    public class callAuth : ICallAuth
+    {
+        public async void Auth()
         {
-            base.OnElementChanged(e);
-
-            // this is a ViewGroup - so should be able to load an AXML file and FindView<>
-            var activity = this.Context as Activity;
-
             var auth = new OAuth2Authenticator(
                 clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
-                clientSecret:App.Instance.OAuthSettings.ClientSecret,
+                clientSecret: App.Instance.OAuthSettings.ClientSecret,
                 scope: App.Instance.OAuthSettings.Scope, // The scopes for the particular API you're accessing. The format for this will vary by API.
                 authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl), // the auth URL for the service
                 redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
@@ -47,7 +41,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
                         App.Instance.SaveToken(eventArgs.Account.Properties["access_token"]);
                         //activity.StartActivity(typeof(ProfilePage));
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     { }
                 }
                 else {
@@ -56,9 +50,9 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             };
 
             try
-            {
+            {                
                 //var intent = auth.GetUI(activity);
-                activity.StartActivity(auth.GetUI(activity));
+                //activity.StartActivity(auth.GetUI(activity));
                 //activity.StartActivity(intent);
             }
             catch (Exception ex)
@@ -66,5 +60,11 @@ namespace Giddh_Cross_Portable.Droid.Renderers
 
             }
         }
+
+        public void twitterLogin()
+        { }
+
+        public void logout()
+        { }
     }
 }

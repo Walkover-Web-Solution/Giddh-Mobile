@@ -119,25 +119,26 @@ namespace Giddh_Cross_Portable.Pages
             {
                 return;
             }
-            var accountListPage = new accountListPage();
-            try
-            {
-                App.Instance.MainPage = new NavigationPage(accountListPage);
-            }
-            catch (Exception ex)
-            { }
-            //var tbalanceTabPage = new trialBalanceTabbedPage();
+            //App.Instance.goToTrialBalancePage();
+            //var accountListPage = new accountListPage();
             //try
             //{
-            //    App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
-            //    {
-            //        BackgroundColor = Color.White
-            //    };
+            //    App.Instance.MainPage = new NavigationPage(accountListPage);
             //}
             //catch (Exception ex)
-            //{
+            //{ }
+            var tbalanceTabPage = new trialBalanceTabbedPage();
+            try
+            {
+                App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
+                {
+                    BackgroundColor = Color.White
+                };
+            }
+            catch (Exception ex)
+            {
 
-            //}
+            }
         }
     }
 }

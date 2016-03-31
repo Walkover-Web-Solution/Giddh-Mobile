@@ -226,14 +226,14 @@ namespace Giddh_Cross_Portable.Services
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00","");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    if (gw.openingBalance >= 0)
-                    { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
-                    else
-                    { gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
-                    if (gw.closingBalance >= 0)
-                    { gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    else
-                    { gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
+                    //if (gw.openingBalance >= 0)
+                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
+                    //else
+                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
+                    //if (gw.closingBalance >= 0)
+                    //{ gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
+                    //else
+                    //{ gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
 
 
                 }
@@ -241,41 +241,49 @@ namespace Giddh_Cross_Portable.Services
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    if (gw.openingBalance >= 0)
-                    { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
-                    else
-                    { gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
-                    if (gw.closingBalance >= 0)
-                    { gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    else
-                    { gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
+                    //if (gw.openingBalance >= 0)
+                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
+                    //else
+                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
+                    //if (gw.closingBalance >= 0)
+                    //{ gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
+                    //else
+                    //{ gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 }
                 else if (gw.name.ToLower().Contains("income"))
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    if (gw.openingBalance >= 0)
-                    { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
-                    else
-                    { gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
-                    if (gw.closingBalance >= 0)
-                    { gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    else
-                    { gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
+                    //if (gw.openingBalance >= 0)
+                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
+                    //else
+                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
+                    //if (gw.closingBalance >= 0)
+                    //{ gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
+                    //else
+                    //{ gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 }
                 else if (gw.name.ToLower().Contains("expense"))
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    if (gw.openingBalance >= 0)
-                    { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
-                    else
-                    { gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
-                    if (gw.closingBalance >= 0)
-                    { gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    else
-                    { gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
-                }               
+                    //if (gw.openingBalance >= 0)
+                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
+                    //else
+                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
+                    //if (gw.closingBalance >= 0)
+                    //{ gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
+                    //else
+                    //{ gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
+                }
+                if (gw.openingBalance >= 0)
+                { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
+                else
+                { gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
+                if (gw.closingBalance >= 0)
+                { gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
+                else
+                { gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 Constants.GWTrialBalance.Add(gw);
             }
             Constants.inExpGroup = new groupTrialBalance();

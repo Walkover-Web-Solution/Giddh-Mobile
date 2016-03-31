@@ -72,7 +72,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
                     //redirect to profile page from here
                     //var pPage = App.Instance.GetMainPage().CreateViewController();
                     //NavigationController.PushViewController(pPage, true);
-                    
+                    App.Instance.goToProfilePagePush();
                 }
             }
             catch (Exception ex)

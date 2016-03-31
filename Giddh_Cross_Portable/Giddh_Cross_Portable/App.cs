@@ -96,9 +96,9 @@ namespace Giddh_Cross_Portable
                 //});
             }
             else {
-                var loginPage = new LoginPage();
-                _NavPage = new NavigationPage(loginPage);
-                //DependencyService.Get<IPageController>().GetLoginPage(_NavPage);
+                //var loginPage = new LoginPage();
+                //_NavPage = new NavigationPage(loginPage);
+                DependencyService.Get<IPageController>().GetLoginPage(_NavPage);
             }
 
             return _NavPage;
@@ -186,6 +186,16 @@ namespace Giddh_Cross_Portable
                 //_NavPage.Navigation.PopToRootAsync();
                 return new Action(async () => await _NavPage.Navigation.PopAsync());
             }
+        }
+
+        public void goToProfilePagePush()
+        {
+            _NavPage.Navigation.PushAsync(new NavigationPage(new ProfilePage()));
+        }
+
+        public void goToTrialBalancePage()
+        {
+            _NavPage.Navigation.PushAsync(new NavigationPage(new trialBalanceTabbedPage()));
         }
 
         public async Task<Response> getUserDetails(bool twitter = false)

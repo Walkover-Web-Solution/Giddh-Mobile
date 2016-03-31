@@ -54,6 +54,7 @@ namespace Giddh_Cross_Portable
                 return _Instance;
             }            
         }
+        
 
         public OAuthSettings OAuthSettings { get; private set; }
         public OAuthSettings twitterOAuthSettings { get; private set; }

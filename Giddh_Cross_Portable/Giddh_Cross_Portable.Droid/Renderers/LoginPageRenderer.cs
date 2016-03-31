@@ -28,20 +28,52 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             // this is a ViewGroup - so should be able to load an AXML file and FindView<>
             var activity = this.Context as Activity;
 
-            var auth = new OAuth2Authenticator(
-                clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
-                clientSecret:App.Instance.OAuthSettings.ClientSecret,
-                scope: App.Instance.OAuthSettings.Scope, // The scopes for the particular API you're accessing. The format for this will vary by API.
-                authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl), // the auth URL for the service
-                redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
-                accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token"),
-                getUsernameAsync: null); // the redirect URL for the service
-            auth.ShowUIErrors = false;
-            auth.Title = "Giddh Manager";
-            auth.Completed += Auth_Completed;
+            //var auth = new OAuth2Authenticator(
+            //    clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
+            //    clientSecret:App.Instance.OAuthSettings.ClientSecret,
+            //    scope: App.Instance.OAuthSettings.Scope, // The scopes for the particular API you're accessing. The format for this will vary by API.
+            //    authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl), // the auth URL for the service
+            //    redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
+            //    accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token"),
+            //    getUsernameAsync: null); // the redirect URL for the service
+            //auth.ShowUIErrors = false;
+            //auth.Title = "Giddh Manager";
+            //auth.Completed += Auth_Completed;
+            //try
+            //{                
+            //    activity.StartActivity(auth.GetUI(activity));
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            LoginByGoogle(true);
+        }
+
+        private async void Auth_Completed(object sender, AuthenticatorCompletedEventArgs e)
+        {
+            if (!e.IsAuthenticated)
+            {
+                //Toast.MakeText(this, "Fail to authenticate!", ToastLength.Short).Show();
+                return;
+            }
+            string access_token;
+            e.Account.Properties.TryGetValue("access_token", out access_token);
+            App.Instance.SuccessfulLoginAction.Invoke();
+            // Use eventArgs.Account to do wonderful things
+            Console.WriteLine(access_token);
+            App.Instance.SaveToken(access_token);
+            Console.WriteLine(App.Instance.Token);
             try
-            {                
-                activity.StartActivity(auth.GetUI(activity));
+            {
+                var response = await App.Instance.getUserDetails();
+                if (response.status.Equals("success"))
+                {
+                    //redirect to profile page from here
+                    //var pPage = App.Instance.GetMainPage().CreateViewController();
+                    //NavigationController.PushViewController(pPage, true);
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -49,23 +81,20 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             }
         }
 
-        private void Auth_Completed(object sender, AuthenticatorCompletedEventArgs e)
+        void LoginByGoogle(bool allowCancel)
         {
-            if (e.IsAuthenticated)
-            {
-                try
-                {
-                    App.Instance.SuccessfulLoginAction.Invoke();
-                    // Use eventArgs.Account to do wonderful things
-                    App.Instance.SaveToken(e.Account.Properties["access_token"]);
-                    //activity.StartActivity(typeof(ProfilePage));
-                }
-                catch (Exception ex)
-                { }
-            }
-            else {
-                // The user cancelled
-            }
+            var auth = new OAuth2Authenticator(clientId: "641015054140-5p4laf3lbjvda9bmi94rvcs6m9q13q5v.apps.googleusercontent.com",
+            scope: "https://www.googleapis.com/auth/userinfo.email",
+            authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
+            redirectUrl: new Uri("https://www.googleapis.com/plus/v1/people/me"),
+            getUsernameAsync: null);
+            auth.AllowCancel = allowCancel;
+            auth.ClearCookiesBeforeLogin = true;
+            auth.Completed += Auth_Completed;
+
+            var activity = this.Context as Activity;
+            var intent = auth.GetUI(this.Context);
+            activity.StartActivity(intent);
         }
     }
 }

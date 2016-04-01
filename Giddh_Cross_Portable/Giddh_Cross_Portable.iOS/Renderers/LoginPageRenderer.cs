@@ -31,14 +31,20 @@ namespace Giddh_Cross_Portable.iOS.Renderers
 
         public void callGoogle()
         {
-            auth = new OAuth2Authenticator(
-                clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
-                clientSecret: App.Instance.OAuthSettings.ClientSecret,
-                scope: App.Instance.OAuthSettings.Scope, // The scopes for the particular API you're accessing. The format for this will vary by API.
-                authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl), // the auth URL for the service
-                redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
-                accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token")
-                ); // the redirect URL for the service
+            //auth = new OAuth2Authenticator(
+            //    clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
+            //    clientSecret: App.Instance.OAuthSettings.ClientSecret,
+            //    scope: App.Instance.OAuthSettings.Scope, // The scopes for the particular API you're accessing. The format for this will vary by API.
+            //    authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl), // the auth URL for the service
+            //    redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
+            //    accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token")
+            //    ); // the redirect URL for the service
+            auth = new OAuth2Authenticator(clientId: "641015054140-5p4laf3lbjvda9bmi94rvcs6m9q13q5v.apps.googleusercontent.com",
+            scope: "https://www.googleapis.com/auth/userinfo.email",
+            authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
+            redirectUrl: new Uri("https://www.googleapis.com/plus/v1/people/me"),
+            getUsernameAsync: null);
+
             auth.AllowCancel = true;
             auth.ShowUIErrors = false;
             auth.Title = "Giddh";

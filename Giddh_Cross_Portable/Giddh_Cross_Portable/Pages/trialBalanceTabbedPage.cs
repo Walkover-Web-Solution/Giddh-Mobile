@@ -26,7 +26,7 @@ namespace Giddh_Cross_Portable.Pages
         public trialBalanceTabbedPage()
         {
             try
-            {
+            {                
                 //this.BackgroundColor = Color.White; 
                 createDateStack();                               
             }
@@ -148,7 +148,7 @@ namespace Giddh_Cross_Portable.Pages
             ContentPage newView = new ContentPage();
             try
             {
-                newView.Title = "trial balance";
+                newView.Title = "trialbalance";
                 newView.Style = new Style(typeof(Label));
                                                 
                 firstGroupList = new ListView()
@@ -162,7 +162,8 @@ namespace Giddh_Cross_Portable.Pages
                 StackLayout firstStack = new StackLayout()
                 {
                     Orientation = StackOrientation.Vertical,
-                    Padding = new Thickness(5, 5, 5, 0)                    
+                    Padding = new Thickness(5, 5, 5, 0),
+                    IsClippedToBounds = true                    
                 };
                 firstStack.Children.Add(act);
                 
@@ -207,7 +208,10 @@ namespace Giddh_Cross_Portable.Pages
                 {
                     firstStack.Children.Add(dateStack);
                 }
-                newView.Content = firstStack;
+                newView.Content = new StackLayout
+                {
+                    Children = { act, headerStack, firstGroupList, dateStack }
+                };
             }
             catch (Exception ex)
             { }
@@ -265,8 +269,10 @@ namespace Giddh_Cross_Portable.Pages
             Ract.IsRunning = false;
             this.Children.RemoveAt(0);
             this.Children.RemoveAt(0);
+            this.Children.RemoveAt(0);
             this.Children.Add(createReportsView());
             this.Children.Add(createFirstPage());
+            this.Children.Add(acntPage);
         }
 
         private ContentPage createSecondView()

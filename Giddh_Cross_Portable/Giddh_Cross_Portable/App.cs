@@ -195,7 +195,7 @@ namespace Giddh_Cross_Portable
 
         public void goToTrialBalancePage()
         {
-            _NavPage.Navigation.PushAsync(new NavigationPage(new trialBalanceTabbedPage()));
+            _NavPage.Navigation.PushAsync(new trialBalanceTabbedPage());
         }
 
         public void gotToLedgerPage(accountLedger aLedger)

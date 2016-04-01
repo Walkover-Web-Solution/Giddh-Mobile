@@ -13,9 +13,9 @@ namespace Giddh_Cross_Portable.Services
 {
     class postSubmitter
     {
-        const string domainName = "http://192.168.1.60:9292/giddh-api/";
+        //const string domainName = "http://192.168.1.60:9292/giddh-api/";
         //const string domainName = "http://apitest.giddh.com/giddh-api/";//"http://54.21.254.1/giddh-api/";
-        //const string domainName = "http://api.giddh.com/v1/";
+        const string domainName = "http://api.giddh.com/v1/";
 
         public static async Task<Response> SendRequestGETResponse(string url, List<KeyValuePair<string, string>> values,KeyValuePair<string,string> header)
         {

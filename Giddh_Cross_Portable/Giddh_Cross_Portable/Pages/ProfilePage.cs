@@ -119,7 +119,7 @@ namespace Giddh_Cross_Portable.Pages
             {
                 return;
             }
-            //App.Instance.goToTrialBalancePage();
+            App.Instance.goToTrialBalancePage();
             //var accountListPage = new accountListPage();
             //try
             //{
@@ -127,18 +127,18 @@ namespace Giddh_Cross_Portable.Pages
             //}
             //catch (Exception ex)
             //{ }
-            var tbalanceTabPage = new trialBalanceTabbedPage();
-            try
-            {
-                App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
-                {
-                    BackgroundColor = Color.White
-                };
-            }
-            catch (Exception ex)
-            {
+            //var tbalanceTabPage = new trialBalanceTabbedPage();
+            //try
+            //{
+            //    App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
+            //    {
+            //        BackgroundColor = Color.White
+            //    };
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
         }
     }
 }

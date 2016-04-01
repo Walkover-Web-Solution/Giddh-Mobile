@@ -61,13 +61,14 @@ namespace Giddh_Cross_Portable.Pages
             {
                 return;
             }
-            var accountListPage = new accountLedgerPage(response);
-            try
-            {
-                App.Instance.MainPage = new NavigationPage(accountListPage);
-            }
-            catch (Exception ex)
-            { }
+            App.Instance.gotToLedgerPage(response);
+            //var accountListPage = new accountLedgerPage(response);
+            //try
+            //{
+            //    App.Instance.MainPage = new NavigationPage(accountListPage);
+            //}
+            //catch (Exception ex)
+            //{ }
         }
 
         protected override bool OnBackButtonPressed()

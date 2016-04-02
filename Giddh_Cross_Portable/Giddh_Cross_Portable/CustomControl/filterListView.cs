@@ -15,12 +15,12 @@ namespace Giddh_Cross_Portable.CustomControl
 
             if (string.IsNullOrWhiteSpace(filter))
             {
-                this.ItemsSource = Constants.accountList;
+                this.ItemsSource = Constants.accountList.OrderBy(x => x.name).ToList();
             }
             else {
                 this.ItemsSource = Constants.accountList
                     .Where(x => x.name.ToLower()
-                   .Contains(filter.ToLower()) || x.uniqueName.ToLower().Contains(filter.ToLower()));
+                   .Contains(filter.ToLower()) || x.uniqueName.ToLower().Contains(filter.ToLower())).OrderBy(x => x.name).ToList();
             }
 
             this.EndRefresh();

@@ -56,8 +56,8 @@ namespace Giddh_Cross_Portable.Pages
                 IsGroupingEnabled = true,
                 GroupDisplayBinding = new Binding("Date"),
                 GroupShortNameBinding = new Binding("shortDate"),
-                //HasUnevenRows = true,
-                //RowHeight = -1,
+                HasUnevenRows = true,
+                RowHeight = -1,
                 ItemsSource = ledgerList,
                 ItemTemplate = new DataTemplate(typeof(aLedgerInsideCell)),
                 GroupHeaderTemplate = new DataTemplate(typeof(ledgerGroupHeaderCell))

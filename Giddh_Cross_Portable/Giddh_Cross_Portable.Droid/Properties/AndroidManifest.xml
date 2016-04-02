@@ -2,5 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.walkover.giddh" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="Giddh Manager"></application>
+	<application android:label="Giddh Manager" android:icon="@drawable/icon"></application>
 </manifest>

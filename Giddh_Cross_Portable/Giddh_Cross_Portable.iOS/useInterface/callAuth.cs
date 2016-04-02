@@ -20,7 +20,7 @@ namespace Giddh_Cross_Portable.iOS.useInterface
 
         public void logout()
         {
-
+            Constants.userObj.authKey = string.Empty;
         }
     }
 }

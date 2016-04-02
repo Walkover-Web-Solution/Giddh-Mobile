@@ -34,14 +34,14 @@ namespace Giddh_Cross_Portable.Pages
             var letsC = this;
             var nameLabel = new Label
             {
-                FontSize = 20,
+                FontSize = 18,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 160                
             };
             nameLabel.SetBinding(Label.TextProperty, "name");
             var debit = new Label
             {
-                FontSize = 20,
+                FontSize = 18,
                 HorizontalOptions = LayoutOptions.EndAndExpand,
                 MinimumWidthRequest = 80,
                 HorizontalTextAlignment = TextAlignment.End
@@ -50,26 +50,13 @@ namespace Giddh_Cross_Portable.Pages
             debit.BindingContextChanged += Debit_BindingContextChanged;
             var credit = new Label
             {
-                FontSize = 20,
+                FontSize = 18,
                 HorizontalOptions = LayoutOptions.EndAndExpand,
                 MinimumWidthRequest = 80,
                 HorizontalTextAlignment = TextAlignment.End
             };
             credit.SetBinding(Label.TextProperty, "creditAmount");
             credit.BindingContextChanged += Debit_BindingContextChanged;
-            //Grid ledgerGrid = new Grid
-            //{
-            //    ColumnDefinitions =
-            //    {
-            //        new ColumnDefinition { Width = new GridLength(2,GridUnitType.Star) },
-            //        new ColumnDefinition { Width = new GridLength(1,GridUnitType.Star) },
-            //        new ColumnDefinition { Width = new GridLength(1,GridUnitType.Star) }
-            //    },
-            //    HeightRequest = 80
-            //};
-            //ledgerGrid.Children.Add(nameLabel, 0, 0);
-            //ledgerGrid.Children.Add(credit, 1, 0);
-            //ledgerGrid.Children.Add(debit, 2, 0);
             View = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -94,7 +81,7 @@ namespace Giddh_Cross_Portable.Pages
         {
             var dateLabel = new Label
             {
-                FontSize = 32,
+                FontSize = 28,
                 TextColor = Color.Gray
             };
             dateLabel.SetBinding(Label.TextProperty, "Date");

@@ -65,6 +65,6 @@ namespace Giddh_Cross_Portable.Droid.useInterface
         { }
 
         public void logout()
-        { }
+        { Constants.userObj.authKey = string.Empty; }
     }
 }

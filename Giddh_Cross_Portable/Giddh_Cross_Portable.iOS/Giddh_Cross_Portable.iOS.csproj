@@ -116,6 +116,7 @@
     <Compile Include="Renderers\trialBalanceCarouselPageRenderer.cs" />
     <Compile Include="Renderers\trialBalancePageRenderer.cs" />
     <Compile Include="useInterface\callAuth.cs" />
+    <Compile Include="useInterface\PageController.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

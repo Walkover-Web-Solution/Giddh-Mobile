@@ -28,7 +28,10 @@ namespace Giddh_Cross_Portable.Pages
             try
             {                
                 //this.BackgroundColor = Color.White; 
-                createDateStack();                               
+                createDateStack();
+                this.Children.Add(createReportsView());
+                this.Children.Add(createFirstPage(true));
+                this.Children.Add(acntPage);
             }
             catch (Exception ex)
             {
@@ -39,9 +42,6 @@ namespace Giddh_Cross_Portable.Pages
         protected override void OnAppearing()
         {
             //this.BackgroundColor = Color.White;
-            this.Children.Add(createReportsView());
-            this.Children.Add(createFirstPage(true));
-            this.Children.Add(acntPage);
             base.OnAppearing();
         }
 
@@ -141,6 +141,7 @@ namespace Giddh_Cross_Portable.Pages
             this.Children.Add(createReportsView());
             this.Children.Add(createFirstPage());
             this.Children.Add(acntPage);
+            this.CurrentPage = this.Children[1];
         }
 
         private ContentPage createFirstPage(bool reset = false)

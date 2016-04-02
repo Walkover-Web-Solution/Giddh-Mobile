@@ -168,9 +168,17 @@ namespace Giddh_Cross_Portable
                 //var loginPage = new LoginPage();
                 //NavigationPage prePage = new NavigationPage(loginPage);
                 //_NavPage.Navigation.InsertPageBefore(prePage, proPage);
-                //_NavPage.Navigation.PopToRootAsync();                                
-                DependencyService.Get<ICallAuth>().logout();
+                //_NavPage.Navigation.PopToRootAsync();
+                try
+                {
+                    DependencyService.Get<ICallAuth>().logout();
+                }
+                catch (Exception ex)
+                {
+
+                }
                 DependencyService.Get<IPageController>().GetLoginPage(_NavPage);                
+
                 return new Action(async () => await _NavPage.Navigation.PopToRootAsync());
             }
         }
@@ -190,7 +198,7 @@ namespace Giddh_Cross_Portable
 
         public void goToProfilePagePush()
         {
-            _NavPage.Navigation.PushAsync(new NavigationPage(new ProfilePage()));
+            _NavPage.Navigation.PushAsync(new ProfilePage());
         }
 
         public void goToTrialBalancePage()
@@ -200,7 +208,7 @@ namespace Giddh_Cross_Portable
 
         public void gotToLedgerPage(accountLedger aLedger)
         {
-            _NavPage.Navigation.PushAsync(new NavigationPage(new accountLedgerPage(aLedger)));
+            _NavPage.Navigation.PushAsync(new accountLedgerPage(aLedger));
         }
 
         public async Task<Response> getUserDetails(bool twitter = false)

@@ -15,9 +15,8 @@ namespace Giddh_Cross_Portable.CustomControl
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                FontSize = 24,
-                HorizontalTextAlignment = TextAlignment.Start,
-                HeightRequest = 40
+                FontSize = 20,
+                HorizontalTextAlignment = TextAlignment.Start
             };
             nameLabel.SetBinding(Label.TextProperty, "name");
             //nameLabel.BindingContextChanged += NameLabel_BindingContextChanged1;

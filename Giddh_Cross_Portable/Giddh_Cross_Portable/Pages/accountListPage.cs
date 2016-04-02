@@ -23,6 +23,8 @@ namespace Giddh_Cross_Portable.Pages
                 //IsGroupingEnabled = true,
                 //GroupDisplayBinding = new Binding("Key"),
                 //GroupShortNameBinding = new Binding("Key")
+                HasUnevenRows = true,
+                RowHeight = -1
             };
             searchbar = new SearchBar()
             {
@@ -53,9 +55,11 @@ namespace Giddh_Cross_Portable.Pages
         private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             accountLedger response = new accountLedger();
+            list.IsRefreshing = true;
             try
             {
                 response = await server.getAccountLedgers((accountDetail)e.Item);
+                list.IsRefreshing = false;
             }
             catch (ArgumentException aex)
             {

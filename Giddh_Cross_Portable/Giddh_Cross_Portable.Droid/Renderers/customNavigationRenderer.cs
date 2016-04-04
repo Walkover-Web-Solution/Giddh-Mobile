@@ -22,6 +22,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
     {
         protected override void OnElementChanged(ElementChangedEventArgs<NavigationPage> e)
         {
+            
             base.OnElementChanged(e);
             
             RemoveAppIconFromActionBar();
@@ -30,7 +31,8 @@ namespace Giddh_Cross_Portable.Droid.Renderers
         void RemoveAppIconFromActionBar()
         {
             var actionBar = ((Activity)Context).ActionBar;
-            actionBar.SetIcon(new ColorDrawable(Color.Transparent.ToAndroid()));            
+            actionBar.SetIcon(new ColorDrawable(Color.Transparent.ToAndroid()));
+            
         }
     }
 }

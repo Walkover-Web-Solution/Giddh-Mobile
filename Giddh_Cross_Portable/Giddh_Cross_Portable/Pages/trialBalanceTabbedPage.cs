@@ -43,6 +43,10 @@ namespace Giddh_Cross_Portable.Pages
         {
             //this.BackgroundColor = Color.White;
             base.OnAppearing();
+            act.IsRunning = true;
+            act.HeightRequest = 0;
+            Ract.IsRunning = true;
+            Ract.HeightRequest = 0;
         }
 
         private StackLayout createDateStack(bool first = true)
@@ -131,9 +135,9 @@ namespace Giddh_Cross_Portable.Pages
         private async void ApplyButton_Clicked(object sender, EventArgs e)
         {
             //firstGroupList.IsRefreshing = true;            
-            act.IsRunning = true;
+            act.HeightRequest = 40;
             await App.Instance.getTrialBalance(fromDate.Date, toDate.Date);
-            act.IsRunning = false;
+            act.HeightRequest = 0;
             //firstGroupList.IsRefreshing = false;
             this.Children.RemoveAt(0);
             this.Children.RemoveAt(0);
@@ -152,7 +156,6 @@ namespace Giddh_Cross_Portable.Pages
                 
                 newView.Title = "trialbalance";
                 newView.Style = new Style(typeof(Label));
-                                                
                 firstGroupList = new ListView()
                 {
                     RowHeight = 120,
@@ -244,6 +247,7 @@ namespace Giddh_Cross_Portable.Pages
 
         private ContentPage createReportsView()
         {
+            Ract.HeightRequest = 0;
             ContentPage reportView = new ContentPage();
             reportView.Title = "reports";
             ListView details = new ListView()
@@ -267,9 +271,9 @@ namespace Giddh_Cross_Portable.Pages
 
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
-            Ract.IsRunning = true;
+            Ract.HeightRequest = 40;
             await App.Instance.getTrialBalance(fromDate.Date, toDate.Date);
-            Ract.IsRunning = false;
+            Ract.HeightRequest = 0;
             this.Children.RemoveAt(0);
             this.Children.RemoveAt(0);
             this.Children.RemoveAt(0);

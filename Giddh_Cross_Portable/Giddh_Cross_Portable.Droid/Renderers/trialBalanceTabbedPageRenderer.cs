@@ -21,7 +21,8 @@ namespace Giddh_Cross_Portable.Droid.Renderers
     class trialBalanceTabbedPageRenderer : TabbedPageRenderer
     {
         public override void OnViewAdded(Android.Views.View child)
-        {            
+        {
+            ((Activity)Context).RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnViewAdded(child);
         }
     }

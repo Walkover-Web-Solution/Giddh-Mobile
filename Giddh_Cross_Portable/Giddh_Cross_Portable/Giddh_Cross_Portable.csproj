@@ -60,6 +60,7 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\ProfilePage.cs" />
     <Compile Include="Pages\reportsCell.cs" />
+    <Compile Include="Pages\reportsTBPage.cs" />
     <Compile Include="Pages\trialBalanceCarouselPage.cs" />
     <Compile Include="Pages\trialBalanceCell.cs" />
     <Compile Include="Pages\trialBalancePage.cs" />

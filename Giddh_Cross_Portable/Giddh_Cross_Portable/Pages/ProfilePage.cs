@@ -134,10 +134,10 @@ namespace Giddh_Cross_Portable.Pages
                     await App.Instance.getAccountDetails();
                 }
                 companyListView.IsRefreshing = false;
-                if (resp.status == null)
-                {
-                    return;
-                }
+                //if (resp.status == null)
+                //{
+                //    return;
+                //}
                 App.Instance.goToAccountListPage();
             }
             //var accountListPage = new accountListPage();

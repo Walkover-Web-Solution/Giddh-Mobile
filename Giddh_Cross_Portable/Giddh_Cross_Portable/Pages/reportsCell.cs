@@ -18,9 +18,7 @@ namespace Giddh_Cross_Portable.Pages
                 FontSize = 18,
                 TextColor = Color.Gray,
                 //BackgroundColor = Color.FromRgb(100, 100, 100),
-                HorizontalTextAlignment = TextAlignment.Start,
-                //VerticalTextAlignment = TextAlignment.End,
-                HeightRequest = 30
+                HorizontalTextAlignment = TextAlignment.Start
             };
             nameLabel.SetBinding(Label.TextProperty, "name");
             var topBorder = new BoxView()
@@ -77,7 +75,8 @@ namespace Giddh_Cross_Portable.Pages
             StackLayout secondGroupLabelStackLayout = new StackLayout()
             {
                 Orientation = StackOrientation.Horizontal,
-                Children = { secondGroupOpeningTotalLabel, signLabel, secondGroupPercentageLabel, equalLabel, secondGroupClosingTotalLabel }
+                Children = { secondGroupOpeningTotalLabel, signLabel, secondGroupPercentageLabel, equalLabel, secondGroupClosingTotalLabel },
+                Padding = new Thickness(0,10)
             };
             //secondGroupLabelStackLayout.BindingContext = Constants.assLiGroup;
             //netWorthStack.Children.Add(topBorder);

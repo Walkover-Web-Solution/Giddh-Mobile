@@ -253,7 +253,6 @@ namespace Giddh_Cross_Portable.Pages
             ListView details = new ListView()
             {
                 IsEnabled = false,
-                RowHeight = 120,
                 HasUnevenRows = true
             };
             details.ItemTemplate = new DataTemplate(typeof(reportsCell));

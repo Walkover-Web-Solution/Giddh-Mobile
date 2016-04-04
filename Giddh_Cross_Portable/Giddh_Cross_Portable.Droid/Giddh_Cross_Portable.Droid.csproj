@@ -172,6 +172,8 @@
   <ItemGroup>
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\customContentRenderer.cs" />
+    <Compile Include="Renderers\customNavigationRenderer.cs" />
     <Compile Include="Renderers\LoginPageRenderer.cs" />
     <Compile Include="Renderers\trialBalanceTabbedPageRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

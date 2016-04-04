@@ -149,6 +149,7 @@ namespace Giddh_Cross_Portable.Pages
             ContentPage newView = new ContentPage();
             try
             {
+                
                 newView.Title = "trialbalance";
                 newView.Style = new Style(typeof(Label));
                                                 
@@ -164,7 +165,7 @@ namespace Giddh_Cross_Portable.Pages
                 {
                     Orientation = StackOrientation.Vertical,
                     Padding = new Thickness(5, 5, 5, 0),
-                    IsClippedToBounds = true                    
+                    VerticalOptions = LayoutOptions.FillAndExpand        
                 };
                 firstStack.Children.Add(act);
                 
@@ -211,8 +212,9 @@ namespace Giddh_Cross_Portable.Pages
                 }
                 newView.Content = new StackLayout
                 {
-                    Children = { act, headerStack, firstGroupList, dateStack }
-                };
+                    Children = { act, headerStack, firstGroupList, dateStack },
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };                
             }
             catch (Exception ex)
             { }

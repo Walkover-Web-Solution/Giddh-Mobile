@@ -101,25 +101,45 @@ namespace Giddh_Cross_Portable.Pages
             //act.IsVisible = true;
             //act.IsRunning = true;
             var selectedCompany = (company)e.Item;
-            if (selectedCompany.sharedEntity != null)
+            if (selectedCompany.sharedEntity != null && !selectedCompany.sharedEntity.ToLower().Equals("groups"))
             {
                 await DisplayAlert("Alert", "You are not authorize to perform this action because you have only " + selectedCompany.sharedEntity + " permissions.", "OK");
                 return;
             }
-            companyListView.IsRefreshing = true;
-            Response resp = new Response();
-            if (Constants.selectedCompany == null || !selectedCompany.Equals(Constants.selectedCompany))
+            if (selectedCompany.sharedEntity == null)
             {
-                Constants.selectedCompany = selectedCompany;
-                resp = await App.Instance.getTrialBalance();
-                await App.Instance.getAccountDetails();
+                companyListView.IsRefreshing = true;
+                Response resp = new Response();
+                if (Constants.selectedCompany == null || !selectedCompany.Equals(Constants.selectedCompany))
+                {
+                    Constants.selectedCompany = selectedCompany;
+                    resp = await App.Instance.getTrialBalance();
+                    await App.Instance.getAccountDetails();
+                }
+                companyListView.IsRefreshing = false;
+                if (resp.status == null)
+                {
+                    return;
+                }
+                App.Instance.goToTrialBalancePage();
             }
-            companyListView.IsRefreshing = false;
-            if (resp.status == null)
+            else if (selectedCompany.sharedEntity.ToLower().Contains("group"))
             {
-                return;
+                companyListView.IsRefreshing = true;
+                Response resp = new Response();
+                if (Constants.selectedCompany == null || !selectedCompany.Equals(Constants.selectedCompany))
+                {
+                    Constants.selectedCompany = selectedCompany;
+                    //resp = await App.Instance.getTrialBalance();
+                    await App.Instance.getAccountDetails();
+                }
+                companyListView.IsRefreshing = false;
+                if (resp.status == null)
+                {
+                    return;
+                }
+                App.Instance.goToAccountListPage();
             }
-            App.Instance.goToTrialBalancePage();
             //var accountListPage = new accountListPage();
             //try
             //{

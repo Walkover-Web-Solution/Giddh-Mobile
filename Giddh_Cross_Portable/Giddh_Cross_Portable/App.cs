@@ -211,6 +211,11 @@ namespace Giddh_Cross_Portable
             _NavPage.Navigation.PushAsync(new accountLedgerPage(aLedger));
         }
 
+        public void goToAccountListPage()
+        {
+            _NavPage.Navigation.PushAsync(new accountListPage());
+        }
+
         public async Task<Response> getUserDetails(bool twitter = false)
         {
             Response resp = new Response();

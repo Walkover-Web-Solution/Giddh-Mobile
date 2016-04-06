@@ -123,7 +123,19 @@ namespace Giddh_Cross_Portable.Pages
                 {
                     return;
                 }
-                App.Instance.goToTrialBalancePage();
+                //App.Instance.goToTrialBalancePage();
+                var tbalanceTabPage = new trialBalanceTabbedPage();
+                try
+                {
+                    App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
+                    {
+                        BackgroundColor = Color.White
+                    };
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
             else if (selectedCompany.sharedEntity.ToLower().Contains("group"))
             {
@@ -140,27 +152,17 @@ namespace Giddh_Cross_Portable.Pages
                 //{
                 //    return;
                 //}
-                App.Instance.goToAccountListPage();
+                //App.Instance.goToAccountListPage();
+                var accountListPage = new accountListPage();
+                try
+                {
+                    App.Instance.MainPage = new NavigationPage(accountListPage);
+                }
+                catch (Exception ex)
+                { }
             }
-            //var accountListPage = new accountListPage();
-            //try
-            //{
-            //    App.Instance.MainPage = new NavigationPage(accountListPage);
-            //}
-            //catch (Exception ex)
-            //{ }
-            //var tbalanceTabPage = new trialBalanceTabbedPage();
-            //try
-            //{
-            //    App.Instance.MainPage = new NavigationPage(tbalanceTabPage)
-            //    {
-            //        BackgroundColor = Color.White
-            //    };
-            //}
-            //catch (Exception ex)
-            //{
 
-            //}
+
         }
     }
 }

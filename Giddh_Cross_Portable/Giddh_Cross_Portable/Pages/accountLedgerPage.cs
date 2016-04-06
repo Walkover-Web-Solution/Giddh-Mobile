@@ -128,10 +128,19 @@ namespace Giddh_Cross_Portable.Pages
 
         protected override bool OnBackButtonPressed()
         {
-            App.Instance.MainPage = new NavigationPage(new trialBalanceTabbedPage());
-            //App.Instance._NavPage.Navigation.PopAsync();
-            return true;
-            //return base.OnBackButtonPressed();
+            if (Constants.selectedCompany.sharedEntity == null)
+            {
+                App.Instance.MainPage = new NavigationPage(new trialBalanceTabbedPage());
+                //App.Instance._NavPage.Navigation.PopAsync();
+                return true;
+            }
+            else
+            {
+                App.Instance.MainPage = new NavigationPage(new accountListPage());
+                //App.Instance._NavPage.Navigation.PopAsync();
+                return true;
+            }
+            return base.OnBackButtonPressed();
         }
     }
 }

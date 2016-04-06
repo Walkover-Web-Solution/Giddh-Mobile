@@ -65,28 +65,36 @@ namespace Giddh_Cross_Portable.Pages
             {
                 return;
             }
-            App.Instance.gotToLedgerPage(response);
-            //var accountListPage = new accountLedgerPage(response);
-            //try
-            //{
-            //    App.Instance.MainPage = new NavigationPage(accountListPage);
-            //}
-            //catch (Exception ex)
-            //{ }
+            //App.Instance.gotToLedgerPage(response);
+            var accountListPage = new accountLedgerPage(response);
+            try
+            {
+                App.Instance.MainPage = new NavigationPage(accountListPage);
+            }
+            catch (Exception ex)
+            { }
         }
 
         protected override bool OnBackButtonPressed()
         {
-            var tbalanceTabPage = new trialBalanceTabbedPage();
-            try
+            if (Constants.selectedCompany.sharedEntity != null)
             {
-                App.Instance.MainPage = new NavigationPage(tbalanceTabPage);
-            }
-            catch (Exception ex)
-            {
-
+                App.Instance.MainPage = new NavigationPage(new ProfilePage());
+                //App.Instance._NavPage.Navigation.PopAsync();
+                return true;
+                //return base.OnBackButtonPressed();
             }
             return true;
+            //var tbalanceTabPage = new trialBalanceTabbedPage();
+            //try
+            //{
+            //    App.Instance.MainPage = new NavigationPage(tbalanceTabPage);
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            //return true;
         }
     }
 }

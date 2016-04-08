@@ -177,7 +177,7 @@ namespace Giddh_Cross_Portable
                 {
 
                 }
-                DependencyService.Get<IPageController>().GetLoginPage(_NavPage);                
+                //DependencyService.Get<IPageController>().GetLoginPage(_NavPage);                
 
                 return new Action(async () => await _NavPage.Navigation.PopToRootAsync());
             }

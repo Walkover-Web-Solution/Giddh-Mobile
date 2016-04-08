@@ -45,7 +45,7 @@ namespace Giddh_Cross_Portable.Pages
             stc.HorizontalOptions = LayoutOptions.CenterAndExpand;
             stc.VerticalOptions = LayoutOptions.CenterAndExpand;
             stc.Children.Add(btn);
-            stc.Children.Add(twitterBtn);
+            //stc.Children.Add(twitterBtn);
             Content = stc;
         }
 

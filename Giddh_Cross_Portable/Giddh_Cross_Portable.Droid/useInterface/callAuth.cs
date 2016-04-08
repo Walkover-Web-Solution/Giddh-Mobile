@@ -30,7 +30,7 @@ namespace Giddh_Cross_Portable.Droid.useInterface
                 redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl),
                 accessTokenUrl: new Uri("https://accounts.google.com/o/oauth2/token"),
                 getUsernameAsync: null); // the redirect URL for the service
-
+			auth.AllowCancel = true;
             auth.Completed += (sender, eventArgs) => {
                 if (eventArgs.IsAuthenticated)
                 {
@@ -50,7 +50,8 @@ namespace Giddh_Cross_Portable.Droid.useInterface
             };
 
             try
-            {                
+            {             
+				
                 //var intent = auth.GetUI(activity);
                 //activity.StartActivity(auth.GetUI(activity));
                 //activity.StartActivity(intent);

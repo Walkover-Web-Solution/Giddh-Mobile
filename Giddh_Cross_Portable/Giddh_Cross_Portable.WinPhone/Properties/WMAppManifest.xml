@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{2e42a4ca-32cd-4f6e-80a8-51934880c3ad}" Title="Giddh Manager" RuntimeType="Silverlight" Version="1.2.0.2" Genre="apps.normal" Author="Walkover Web Solutions Private Limited" Description="Giddh Manager" Publisher="Walkover Web Solutions Private Limited" PublisherID="{09217CC4-740F-462C-8E52-CAE40E7FACB9}">
+  <App xmlns="" ProductID="{2e42a4ca-32cd-4f6e-80a8-51934880c3ad}" Title="Giddh Manager" RuntimeType="Silverlight" Version="1.3.0.0" Genre="apps.normal" Author="Walkover Web Solutions Private Limited" Description="Giddh Manager" Publisher="Walkover Web Solutions Private Limited" PublisherID="{09217CC4-740F-462C-8E52-CAE40E7FACB9}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -16,7 +16,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\159x159.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\134x202.png</BackgroundImageURI>
-          <Title>Giddh</Title>
+          <Title>Giddh Manager</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

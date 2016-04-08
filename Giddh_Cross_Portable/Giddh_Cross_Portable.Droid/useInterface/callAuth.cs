@@ -18,9 +18,9 @@ using Xamarin.Auth;
 
 namespace Giddh_Cross_Portable.Droid.useInterface
 {
-    public class callAuth : ICallAuth
+    public class callAuth
     {
-		public async void Auth(object getThis)
+        public async void Auth(object getThis)
         {
             var auth = new OAuth2Authenticator(
                 clientId: App.Instance.OAuthSettings.ClientId, // your OAuth2 client id
@@ -50,11 +50,11 @@ namespace Giddh_Cross_Portable.Droid.useInterface
             };
 
             try
-            {             
-				//getThis
-                //var intent = auth.GetUI(activity);
-                //activity.StartActivity(auth.GetUI(activity));
-                //activity.StartActivity(intent);
+            {
+                var activity = getThis as Activity;
+                var intent = auth.GetUI(activity);
+                activity.StartActivity(auth.GetUI(activity));
+                activity.StartActivity(intent);
             }
             catch (Exception ex)
             {

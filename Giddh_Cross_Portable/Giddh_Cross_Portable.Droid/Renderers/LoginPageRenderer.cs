@@ -14,8 +14,10 @@ using Xamarin.Forms;
 using Giddh_Cross_Portable.Droid.Renderers;
 using Xamarin.Auth;
 using Xamarin.Forms.Platform.Android;
+using Giddh_Cross_Portable.Interface;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer))]
+[assembly: Dependency(typeof(callAUth))]
 
 namespace Giddh_Cross_Portable.Droid.Renderers
 {
@@ -65,7 +67,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             }
         }
 
-        void LoginByGoogle(bool allowCancel)
+        public void LoginByGoogle(bool allowCancel)
         {
             var auth = new OAuth2Authenticator(clientId: "641015054140-5p4laf3lbjvda9bmi94rvcs6m9q13q5v.apps.googleusercontent.com",
             scope: "https://www.googleapis.com/auth/userinfo.email",
@@ -75,10 +77,38 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             auth.AllowCancel = allowCancel;
             auth.ClearCookiesBeforeLogin = true;
             auth.Completed += Auth_Completed;
+            try
+            {
+                var activity = this.Context as Activity;
+                var intent = auth.GetUI(this.Context);
+                activity.StartActivity(intent);
+            }
+            catch (AggregateException aex)
+            { }
+            catch (Exception ex)
+            { }
+            
+        }        
 
-            var activity = this.Context as Activity;
-            var intent = auth.GetUI(this.Context);
-            activity.StartActivity(intent);
+    }
+
+    class callAUth : ICallAuth
+    {
+        public async void Auth(object getThis)
+        {
+            LoginPageRenderer lpr = new LoginPageRenderer();
+            lpr.LoginByGoogle(true);
+            //OAuth2Authenticator auth;
+        }
+
+        public void twitterLogin()
+        {
+
+        }
+
+        public void logout()
+        {
+            Constants.userObj.authKey = string.Empty;
         }
     }
 }

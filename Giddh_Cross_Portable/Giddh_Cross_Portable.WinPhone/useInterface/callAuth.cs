@@ -22,7 +22,7 @@ namespace Giddh_Cross_Portable.WinPhone.useInterface
     {
         UserCredential _credential;
         public callAuth() { }
-        public async void Auth()
+        public async void Auth(object getThis)
         {
             
             if (string.IsNullOrEmpty(Constants.userObj.authKey))

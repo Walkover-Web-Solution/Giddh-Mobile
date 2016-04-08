@@ -8,7 +8,7 @@ namespace Giddh_Cross_Portable.iOS.useInterface
 {
     public class callAuth : ICallAuth
     {
-        public async void Auth()
+        public async void Auth(object getThis)
         {
             //OAuth2Authenticator auth;
         }

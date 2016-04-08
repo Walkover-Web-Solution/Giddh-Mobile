@@ -164,7 +164,19 @@ namespace Giddh_Cross_Portable
             get
             {
                 //NavigationPage prePage = _NavPage;
-                Page proPage = _NavPage.CurrentPage;
+                
+                _NavPage.Navigation.PushAsync(new LoginPage());
+                var existingPages = _NavPage.Navigation.NavigationStack.ToList();
+                for (int i = 0; i < existingPages.Count; i++)
+                {
+                    if (existingPages[i] is LoginPage)
+                    { }
+                    else
+                    {
+                        _NavPage.Navigation.RemovePage(existingPages[i]);
+                    }
+                }
+                //Page proPage = _NavPage.CurrentPage;
                 //var loginPage = new LoginPage();
                 //NavigationPage prePage = new NavigationPage(loginPage);
                 //_NavPage.Navigation.InsertPageBefore(prePage, proPage);
@@ -199,6 +211,14 @@ namespace Giddh_Cross_Portable
         public void goToProfilePagePush()
         {
             _NavPage.Navigation.PushAsync(new ProfilePage());
+            var existingPages = _NavPage.Navigation.NavigationStack.ToList();
+            for (int i = 0; i < existingPages.Count; i++)
+            {
+                if (existingPages[i] is LoginPage)
+                    _NavPage.Navigation.RemovePage(existingPages[i]);
+            }
+            
+            
         }
 
         public void goToTrialBalancePage()

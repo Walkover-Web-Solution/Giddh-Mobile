@@ -61,7 +61,7 @@ namespace Giddh_Cross_Portable.Pages
             {
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { nameLabel, credit, debit },
+                Children = { nameLabel, debit, credit },
                 Padding = new Thickness(0,5)
             };
         }

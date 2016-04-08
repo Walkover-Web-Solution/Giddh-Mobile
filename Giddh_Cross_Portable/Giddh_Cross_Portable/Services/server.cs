@@ -136,6 +136,7 @@ namespace Giddh_Cross_Portable.Services
                         foreach (accountDetail account in group.accounts)
                         {
                             account.parentGroupUniqueName = group.uniqueName;
+                            account.name = account.name.TrimEnd();
                             Constants.accountList.Add(account);
                         }
                     }

@@ -28,7 +28,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             // this is a ViewGroup - so should be able to load an AXML file and FindView<>
             try
             {
-                LoginByGoogle(false);
+                //LoginByGoogle(false);
             }
             catch (AggregateException ex)
             { }

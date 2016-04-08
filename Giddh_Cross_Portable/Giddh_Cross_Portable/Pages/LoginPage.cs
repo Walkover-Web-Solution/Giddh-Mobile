@@ -60,12 +60,14 @@ namespace Giddh_Cross_Portable.Pages
             //DependencyService.Get<ICallAuth>().Auth();
         }
 
+
+
         private async void Btn_Clicked(object sender, EventArgs e)
         {
             //await DisplayAlert("Alert", "login button click", "OK");
             try
             {
-                DependencyService.Get<ICallAuth>().Auth();
+				DependencyService.Get<ICallAuth>().Auth(this);
             }
             catch (Exception ex)
             {

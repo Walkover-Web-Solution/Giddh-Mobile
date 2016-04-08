@@ -8,7 +8,7 @@ namespace Giddh_Cross_Portable.Interface
 {
     public interface ICallAuth
     {
-        void Auth();
+		void Auth(object passthis);
 
         void twitterLogin();
 

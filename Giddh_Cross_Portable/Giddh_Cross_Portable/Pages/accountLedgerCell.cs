@@ -81,14 +81,14 @@ namespace Giddh_Cross_Portable.Pages
         {
             var dateLabel = new Label
             {
-                FontSize = 28,
+                //FontSize = 28,
                 TextColor = Color.Gray
             };
             dateLabel.SetBinding(Label.TextProperty, "Date");
             View = new StackLayout
             {
-                Children = { dateLabel },
-                Padding = new Thickness(0,10)
+                Children = { dateLabel }
+                //Padding = new Thickness(0,10)
             };
         }
     }

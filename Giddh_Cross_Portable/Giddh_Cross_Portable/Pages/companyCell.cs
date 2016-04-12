@@ -14,7 +14,7 @@ namespace Giddh_Cross_Portable.Pages
             var nameLabel = new Label
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                FontSize = 24,
+                FontSize = 18,
                 TextColor = Color.Gray                                
             };
             nameLabel.SetBinding(Label.TextProperty, "name");

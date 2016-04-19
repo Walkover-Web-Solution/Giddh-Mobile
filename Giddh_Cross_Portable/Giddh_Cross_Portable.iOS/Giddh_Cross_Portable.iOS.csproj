@@ -100,6 +100,7 @@
     <Compile Include="MainViewController.designer.cs">
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Renderers\ExtendedSearchBarRenderer.cs" />
     <Compile Include="Renderers\LoginPageRenderer.cs" />
     <Compile Include="Renderers\ProfilePageRenderer.cs" />
     <Compile Include="Renderers\trialBalanceCarouselPageRenderer.cs" />

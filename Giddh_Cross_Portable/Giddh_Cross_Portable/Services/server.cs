@@ -203,10 +203,90 @@ namespace Giddh_Cross_Portable.Services
                 throw ex;
             }
             Constants.trialBalance = JsonConvert.DeserializeObject<trialBalance>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            //double assetsOB = 0;
+            //double liabOB = 0;
+            //double incOB = 0;
+            //double expOB = 0;
+            //double assetsCB = 0;
+            //double liabCB = 0;
+            //double incCB = 0;
+            //double expCB = 0;
+            //double aCT = 0;
+            //double lCT = 0;
+            //double iCT = 0;
+            //double eCT = 0;
+            //double aDT = 0;
+            //double lDT = 0;
+            //double iDT = 0;
+            //double eDT = 0;
+            //List<gGroup> newGroups = new List<gGroup>();
+            //foreach (gDetails gd in Constants.trialBalance.groupDetails)
+            //{
+            //    if (gd.category.ToLower().Equals("assets"))
+            //    {
+            //        assetsOB = (gd.forwardedBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.forwardedBalance.amount : assetsOB - gd.forwardedBalance.amount;
+            //        assetsCB = (gd.closingBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.closingBalance.amount : assetsOB - gd.closingBalance.amount;
+            //        aCT += gd.creditTotal;
+            //        aDT += gd.debitTotal;
+            //    }
+            //    else if (gd.category.ToLower().Equals("liabilities"))
+            //    {
+            //        liabOB = (gd.forwardedBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.forwardedBalance.amount : assetsOB - gd.forwardedBalance.amount;
+            //        liabCB = (gd.closingBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.closingBalance.amount : assetsOB - gd.closingBalance.amount;
+            //        lCT += gd.creditTotal;
+            //        lDT += gd.debitTotal;
+            //    }
+            //    else if (gd.category.ToLower().Equals("income"))
+            //    {
+            //        incOB = (gd.forwardedBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.forwardedBalance.amount : assetsOB - gd.forwardedBalance.amount;
+            //        incCB = (gd.closingBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.closingBalance.amount : assetsOB - gd.closingBalance.amount;
+            //        iCT += gd.creditTotal;
+            //        iDT += gd.debitTotal;
+            //    }
+            //    else if (gd.category.ToLower().Equals("expense"))
+            //    {
+            //        expOB = (gd.forwardedBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.forwardedBalance.amount : assetsOB - gd.forwardedBalance.amount;
+            //        expCB = (gd.closingBalance.type.ToLower().Contains("debit")) ? assetsOB + gd.closingBalance.amount : assetsOB - gd.closingBalance.amount;
+            //        eCT += gd.creditTotal;
+            //        eDT += gd.debitTotal;
+            //    }
+            //}
+            //newGroups.Add(new gGroup
+            //{
+            //    groupName = "assets",
+            //    openingBalance = assetsOB,
+            //    closingBalance = assetsCB,
+            //    creditTotal = aCT,
+            //    debitTotal = aDT
+            //});
+            //newGroups.Add(new gGroup
+            //{
+            //    groupName = "liabilities",
+            //    openingBalance = liabOB,
+            //    closingBalance = liabCB,
+            //    creditTotal = lCT,
+            //    debitTotal = lDT
+            //});
+            //newGroups.Add(new gGroup
+            //{
+            //    groupName = "income",
+            //    openingBalance = incOB,
+            //    closingBalance = incCB,
+            //    creditTotal = iCT,
+            //    debitTotal = iDT
+            //});
+            //newGroups.Add(new gGroup
+            //{
+            //    groupName = "expense",
+            //    openingBalance = expOB,
+            //    closingBalance = expCB,
+            //    creditTotal = eCT,
+            //    debitTotal = eDT
+            //});
             var groups = Constants.trialBalance.groupDetails.GroupBy(x => x.category).Select(g => new
             {
                 groupName = g.Key,
-                openingBalance = ((g.Where(x => x.category.Equals(g.Key) && x.forwardedBalance.type.ToLower().Contains("debit")).Sum(x => x.forwardedBalance.amount))- (g.Where(x => x.category.Equals(g.Key) && x.forwardedBalance.type.ToLower().Contains("credit")).Sum(x => x.forwardedBalance.amount))),
+                openingBalance = ((g.Where(x => x.category.Equals(g.Key) && x.forwardedBalance.type.ToLower().Contains("debit")).Sum(x => x.forwardedBalance.amount)) - (g.Where(x => x.category.Equals(g.Key) && x.forwardedBalance.type.ToLower().Contains("credit")).Sum(x => x.forwardedBalance.amount))),
                 closingBalance = ((g.Where(x => x.category.Equals(g.Key) && x.closingBalance.type.ToLower().Contains("debit")).Sum(x => x.closingBalance.amount)) - (g.Where(x => x.category.Equals(g.Key) && x.closingBalance.type.ToLower().Contains("credit")).Sum(x => x.closingBalance.amount))),
                 creditTotal = (g.Where(x => x.category.Equals(g.Key)).Sum(x => x.creditTotal)),
                 debitTotal = (g.Where(x => x.category.Equals(g.Key)).Sum(x => x.debitTotal)),
@@ -227,55 +307,21 @@ namespace Giddh_Cross_Portable.Services
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00","");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    //if (gw.openingBalance >= 0)
-                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
-                    //else
-                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
-                    //if (gw.closingBalance >= 0)
-                    //{ gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    //else
-                    //{ gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
-
-
                 }
                 else if (gw.name.ToLower().Contains("liabilities"))
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    //if (gw.openingBalance >= 0)
-                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
-                    //else
-                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
-                    //if (gw.closingBalance >= 0)
-                    //{ gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    //else
-                    //{ gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 }
                 else if (gw.name.ToLower().Contains("income"))
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    //if (gw.openingBalance >= 0)
-                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Cr."; }
-                    //else
-                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Dr."; }
-                    //if (gw.closingBalance >= 0)
-                    //{ gw.cBalance = "Cr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    //else
-                    //{ gw.cBalance = "Dr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 }
                 else if (gw.name.ToLower().Contains("expense"))
                 {
                     gw.creditTotal = "d" + (Math.Round(group.creditTotal)).ToString("N").Replace(".00", "");
                     gw.debitTotal = "u" + (Math.Round(group.debitTotal)).ToString("N").Replace(".00", "");
-                    //if (gw.openingBalance >= 0)
-                    //{ gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }
-                    //else
-                    //{ gw.oBalance = (gw.openingBalance * -1).ToString("N").Replace(".00", "") + " Cr."; }
-                    //if (gw.closingBalance >= 0)
-                    //{ gw.cBalance = "Dr. " + gw.closingBalance.ToString("N").Replace(".00", ""); }
-                    //else
-                    //{ gw.cBalance = "Cr. " + (gw.closingBalance * -1).ToString("N").Replace(".00", ""); }
                 }
                 if (gw.openingBalance >= 0)
                 { gw.oBalance = gw.openingBalance.ToString("N").Replace(".00", "") + " Dr."; }

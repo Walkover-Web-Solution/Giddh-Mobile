@@ -6,7 +6,7 @@ using Xamarin.Auth;
 
 namespace Giddh_Cross_Portable.iOS.useInterface
 {
-    public class callAuth : ICallAuth
+    public class callAuth
     {
         public async void Auth(object getThis)
         {

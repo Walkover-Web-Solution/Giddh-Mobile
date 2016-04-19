@@ -1,4 +1,5 @@
-﻿using Giddh_Cross_Portable.iOS.Renderers;
+﻿using Giddh_Cross_Portable.Interface;
+using Giddh_Cross_Portable.iOS.Renderers;
 using Giddh_Cross_Portable.Pages;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer))]
+[assembly: Dependency(typeof(callAuth))]
 
 namespace Giddh_Cross_Portable.iOS.Renderers
 {
@@ -44,21 +46,33 @@ namespace Giddh_Cross_Portable.iOS.Renderers
             authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
             redirectUrl: new Uri("https://www.googleapis.com/plus/v1/people/me"),
             getUsernameAsync: null);
-
+            auth.ClearCookiesBeforeLogin = true;
             auth.AllowCancel = true;
             auth.ShowUIErrors = false;
             auth.Title = "Giddh";
-
+            auth.BrowsingCompleted += Auth_BrowsingCompleted;
+            
             auth.Completed += Auth_Completed;
+            try
+            {
+                PresentViewController(auth.GetUI(), true, null);
+            }
+            catch (Exception ex)
+            {
 
-            PresentViewController(auth.GetUI(), true, null);
+            }
+        }
+
+        private void Auth_BrowsingCompleted(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private async void Auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
         {            
             if (eventArgs.IsAuthenticated)
             {
-                App.Instance.SuccessfulLoginAction.Invoke();
+                //App.Instance.SuccessfulLoginAction.Invoke();
                 // Use eventArgs.Account to do wonderful things
                 Console.WriteLine(eventArgs.Account.Properties["access_token"]);
                 App.Instance.SaveToken(eventArgs.Account.Properties["access_token"]);
@@ -66,17 +80,21 @@ namespace Giddh_Cross_Portable.iOS.Renderers
                 try
                 {
                     var response = await App.Instance.getUserDetails();
-                    if (response.status.Equals("success")) {
+                    if (!response.status.Equals("success"))
+                    {
                         //redirect to profile page from here
                         //var pPage = App.Instance.GetMainPage().CreateViewController();
                         //NavigationController.PushViewController(pPage, true);
-                                                
-                        window = new UIWindow(UIScreen.MainScreen.Bounds);
+                        App.Instance.broadcastProblem(response);
 
-                        window.RootViewController = App.Instance.GetMainPage().CreateViewController();
-                        window.MakeKeyAndVisible();
 
                     }
+
+                    window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+                    window.RootViewController = App.Instance.GetMainPage().CreateViewController();
+                    window.MakeKeyAndVisible();
+
                 }
                 catch (Exception ex)
                 {
@@ -86,7 +104,28 @@ namespace Giddh_Cross_Portable.iOS.Renderers
             }
             else {
                 // The user cancelled
+                
             }            
+        }
+    }
+
+    public class callAuth : ICallAuth
+    {
+        public async void Auth(object getThis)
+        {
+            //OAuth2Authenticator auth;
+            LoginPageRenderer lpr = new LoginPageRenderer();
+            lpr.callGoogle();
+        }
+
+        public void twitterLogin()
+        {
+
+        }
+
+        public void logout()
+        {
+            Constants.userObj.authKey = string.Empty;
         }
     }
 }

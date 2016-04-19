@@ -60,6 +60,10 @@ namespace Giddh_Cross_Portable.Droid.Renderers
                     //NavigationController.PushViewController(pPage, true);
                     App.Instance.goToProfilePagePush();
                 }
+                else
+                {
+                    Giddh_Cross_Portable.App.Instance.broadcastProblem(response);
+                }
             }
             catch (Exception ex)
             {

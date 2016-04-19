@@ -64,6 +64,15 @@ namespace Giddh_Cross_Portable.Model
         public gDetails group { get; set; }
     }
 
+    public class gGroup
+    {
+        public string groupName { get; set; }
+        public double openingBalance { get; set; }
+        public double closingBalance { get; set; }
+        public double creditTotal { get; set; }
+        public double debitTotal { get; set; }
+    }
+
     public class groupDetail
     {
         public string name { get; set; }

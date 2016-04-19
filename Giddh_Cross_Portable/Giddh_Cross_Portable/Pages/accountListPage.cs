@@ -28,13 +28,14 @@ namespace Giddh_Cross_Portable.Pages
             };
             searchbar = new SearchBar()
             {
-                Placeholder = "Search",
+                Placeholder = "Search"                
             };
-
-            searchbar.TextChanged += (sender, e) => list.FilterLocations(searchbar.Text);
+                      
+            //searchbar.TextChanged += (sender, e) => list.FilterLocations(searchbar.Text);
             searchbar.SearchButtonPressed += (sender, e) => {
                 list.FilterLocations(searchbar.Text);
             };
+            searchbar.Unfocused += (sender, e) => list.FilterLocations(searchbar.Text);
             //var sorted = from monkey in Constants.accountList orderby monkey.name group monkey by monkey.NameSort into monkeyGroup select new Grouping<string, accountDetail>(monkeyGroup.Key, monkeyGroup);
             //var MonkeysGrouped = new ObservableCollection<Grouping<string, accountDetail>>(sorted);
             list.ItemsSource = Constants.accountList.OrderBy(x => x.name).ToList();

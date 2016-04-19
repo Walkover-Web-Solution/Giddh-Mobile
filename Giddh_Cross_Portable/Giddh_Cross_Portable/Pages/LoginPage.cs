@@ -1,4 +1,5 @@
 ﻿using Giddh_Cross_Portable.Interface;
+using Giddh_Cross_Portable.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace Giddh_Cross_Portable.Pages
             //    VerticalOptions = LayoutOptions.Center,
             //    HorizontalOptions = LayoutOptions.Center                
             //};
-
+            MessagingCenter.Subscribe<App, Response>(this, "problem", (sender, args) =>
+            {
+                DisplayAlert(args.status, args.message, "OK");
+            });
             Button btn = new Button
             {
                 Text = "Google",

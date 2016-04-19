@@ -36,7 +36,7 @@ namespace Giddh_Cross_Portable.Droid.useInterface
                 {
                     try
                     {
-                        App.Instance.SuccessfulLoginAction.Invoke();
+                        //App.Instance.SuccessfulLoginAction.Invoke();
                         // Use eventArgs.Account to do wonderful things
                         App.Instance.SaveToken(eventArgs.Account.Properties["access_token"]);
                         //activity.StartActivity(typeof(ProfilePage));

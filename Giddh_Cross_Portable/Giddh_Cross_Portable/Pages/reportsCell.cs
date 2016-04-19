@@ -104,7 +104,8 @@ namespace Giddh_Cross_Portable.Pages
             {
                 lb.Text = lb.Text.Replace("-", "");
             }
-            lb.Text = lb.Text + "%";
+            if (!lb.Text.Equals("0"))
+                lb.Text = lb.Text + "%";
         }
     }
 }

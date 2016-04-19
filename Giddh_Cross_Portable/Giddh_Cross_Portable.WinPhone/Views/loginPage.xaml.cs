@@ -40,7 +40,7 @@ namespace Giddh_Cross_Portable.WinPhone.Views
             try
             {
                 callAuth ca = new callAuth();
-                ca.Auth();
+                ca.Auth(this);
             }
             catch (Exception ex)
             {

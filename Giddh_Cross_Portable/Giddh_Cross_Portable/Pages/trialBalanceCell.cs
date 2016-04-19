@@ -93,6 +93,7 @@ namespace Giddh_Cross_Portable.Pages
                 //TextColor = Color.Black
             };
             obLabel.SetBinding(Label.TextProperty, "oBalance");
+            obLabel.BindingContextChanged += ObLabel_BindingContextChanged;
 
             var cbLabel = new Label
             {
@@ -100,7 +101,7 @@ namespace Giddh_Cross_Portable.Pages
                 //TextColor = Color.Black
             };
             cbLabel.SetBinding(Label.TextProperty, "cBalance");
-
+            cbLabel.BindingContextChanged += ObLabel_BindingContextChanged;
             var nameLayout = new StackLayout()
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -126,7 +127,16 @@ namespace Giddh_Cross_Portable.Pages
                 Children = { balance, nameLayout }
             };
             return sendThis;
-        }        
+        }
+
+        private static void ObLabel_BindingContextChanged(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            if (lb.Text == null || lb.Text.Equals("0 Dr.") || lb.Text.Equals("0 Cr.") || lb.Text.Equals("Cr. 0") || lb.Text.Equals("Dr. 0"))
+            {
+                lb.Text = "zero";
+            }
+        }
 
         private static void TwitterLabel_BindingContextChanged(object sender, EventArgs e)
         {
@@ -142,6 +152,10 @@ namespace Giddh_Cross_Portable.Pages
                 {
                     lb.Text = lb.Text.Remove(0, 1);
                     //lb.Text = "Dr." + lb.Text;//"↑" + lb.Text;
+                }
+                if (lb.Text.Equals("0"))
+                {
+                    lb.Text = "zero";
                 }
             }
             catch (Exception ex)
@@ -162,6 +176,10 @@ namespace Giddh_Cross_Portable.Pages
                 {
                     lb.Text = lb.Text.Remove(0, 1);
                     lb.Text = lb.Text + "↑";
+                }
+                if (lb.Text.Equals("0"))
+                {
+                    lb.Text = "zero";
                 }
             }
             catch (Exception ex)

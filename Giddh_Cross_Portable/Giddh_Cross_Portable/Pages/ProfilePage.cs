@@ -110,15 +110,17 @@ namespace Giddh_Cross_Portable.Pages
             }
             if (selectedCompany.sharedEntity == null)
             {
+                companyListView.IsEnabled = false;
                 companyListView.IsRefreshing = true;
                 Response resp = new Response();
                 if (Constants.selectedCompany == null || !selectedCompany.Equals(Constants.selectedCompany))
                 {
                     Constants.selectedCompany = selectedCompany;
                     resp = await App.Instance.getTrialBalance();
-                    await App.Instance.getAccountDetails();
+                    //await App.Instance.getAccountDetails();
                 }
                 companyListView.IsRefreshing = false;
+                companyListView.IsEnabled = true;
                 if (resp.status == null)
                 {
                     return;

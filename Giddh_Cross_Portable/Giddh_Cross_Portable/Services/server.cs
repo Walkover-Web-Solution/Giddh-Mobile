@@ -180,9 +180,40 @@ namespace Giddh_Cross_Portable.Services
             else                
                 throw new ArgumentException(response.message);
         }
-        
+
 
         #region trial balance section
+
+        public static void filterAccountsFromTB(List<gDetails> groupList)
+        {
+            foreach (gDetails group in groupList)
+            {
+                try
+                {
+                    if (group.accounts != null && group.accounts.Count > 0)
+                    {
+                        foreach (aDetails account in group.accounts)
+                        {
+                            accountDetail newAccount = new accountDetail();
+                            newAccount.parentGroupUniqueName = group.uniqueName;
+                            newAccount.name = account.name.TrimEnd();
+                            newAccount.openingBalance = account.openingBalance.amount;
+                            newAccount.openingBalanceType = account.openingBalance.type;
+                            newAccount.uniqueName = account.uniqueName;
+                            Constants.accountList.Add(newAccount);
+                        }
+                    }
+                    if (group.childGroups != null && group.childGroups.Count > 0)
+                    {
+                        filterAccountsFromTB(group.childGroups);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+            }
+        }
         public static async Task<Response> getTrialBalance(DateTime from = new DateTime(),DateTime to = new DateTime())
         {
             string fromDate = from.ToString("dd-MM-yyyy");
@@ -203,6 +234,8 @@ namespace Giddh_Cross_Portable.Services
                 throw ex;
             }
             Constants.trialBalance = JsonConvert.DeserializeObject<trialBalance>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            Constants.accountList = new ObservableCollection<accountDetail>();
+            filterAccountsFromTB(Constants.trialBalance.groupDetails);
             //double assetsOB = 0;
             //double liabOB = 0;
             //double incOB = 0;

@@ -56,14 +56,22 @@ namespace Giddh_Cross_Portable.Pages
         private async void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             accountLedger response = new accountLedger();
+            if (list.IsRefreshing)
+                return;
             list.IsRefreshing = true;
+            list.IsEnabled = false;
             try
             {
+                
                 response = await server.getAccountLedgers((accountDetail)e.Item);
+                list.IsEnabled = true;
                 list.IsRefreshing = false;
             }
             catch (ArgumentException aex)
             {
+                list.IsEnabled = true;
+                list.IsRefreshing = false;
+                await DisplayAlert("Error", aex.Message, "Ok");
                 return;
             }
             App.Instance.gotToLedgerPage(response);

@@ -80,7 +80,7 @@ namespace Giddh_Cross_Portable.Pages
             StackLayout headerStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Children = { new Label { Text = "Particular", HorizontalOptions = LayoutOptions.StartAndExpand, WidthRequest = 160 }, new Label { Text = "Dr.", HorizontalOptions = LayoutOptions.EndAndExpand, WidthRequest = 80, HorizontalTextAlignment = TextAlignment.End }, new Label { Text = "Cr.", HorizontalOptions = LayoutOptions.EndAndExpand, WidthRequest = 80, HorizontalTextAlignment = TextAlignment.End } }
+                Children = { new Label { Text = "Particular", HorizontalOptions = LayoutOptions.StartAndExpand, WidthRequest = 160 } } //, new Label { Text = "Dr.", HorizontalOptions = LayoutOptions.EndAndExpand, WidthRequest = 80, HorizontalTextAlignment = TextAlignment.End }, new Label { Text = "Cr.", HorizontalOptions = LayoutOptions.EndAndExpand, WidthRequest = 80, HorizontalTextAlignment = TextAlignment.End }
             };
 
             Content = new StackLayout()

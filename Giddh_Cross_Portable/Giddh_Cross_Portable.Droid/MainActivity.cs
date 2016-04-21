@@ -26,6 +26,8 @@ namespace Giddh_Cross_Portable.Droid
             //this.StartActivity(intent);
             //App.Instance.MainPage = App.Instance.GetMainPage();
         }
+
+        
     }
 }
 

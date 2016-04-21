@@ -134,7 +134,7 @@ namespace Giddh_Cross_Portable.Services
             }
             HttpResponseMessage response = await httpClient.GetAsync(domainName + url);
             //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
-            Debug.WriteLine(domainName + url);
+            Debug.WriteLine(finalurl);
             response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
             //Debug.WriteLine(url + "--" + responseString);

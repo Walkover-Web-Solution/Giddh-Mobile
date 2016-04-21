@@ -42,8 +42,7 @@ namespace Giddh_Cross_Portable.Pages
             var debit = new Label
             {
                 FontSize = 18,
-                HorizontalOptions = LayoutOptions.EndAndExpand,
-                MinimumWidthRequest = 80,
+                HorizontalOptions = LayoutOptions.Start,
                 HorizontalTextAlignment = TextAlignment.End
             };
             debit.SetBinding(Label.TextProperty, "debitAmount");
@@ -51,12 +50,11 @@ namespace Giddh_Cross_Portable.Pages
             var credit = new Label
             {
                 FontSize = 18,
-                HorizontalOptions = LayoutOptions.EndAndExpand,
-                MinimumWidthRequest = 80,
+                HorizontalOptions = LayoutOptions.Start,
                 HorizontalTextAlignment = TextAlignment.End
             };
             credit.SetBinding(Label.TextProperty, "creditAmount");
-            credit.BindingContextChanged += Debit_BindingContextChanged;
+            credit.BindingContextChanged += Credit_BindingContextChanged;
             View = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -66,12 +64,24 @@ namespace Giddh_Cross_Portable.Pages
             };
         }
 
+        private void Credit_BindingContextChanged(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            lb.Text = (Convert.ToDouble(lb.Text)).ToString("N").Replace(".00", "");
+            if (lb.Text.Equals("0"))
+                lb.Text = "";
+            else
+                lb.Text = "Cr. " + lb.Text;
+        }
+
         private void Debit_BindingContextChanged(object sender, EventArgs e)
         {
             Label lb = sender as Label;
             lb.Text = (Convert.ToDouble(lb.Text)).ToString("N").Replace(".00", "");
             if (lb.Text.Equals("0"))
                 lb.Text = "";
+            else
+                lb.Text = "Dr. " + lb.Text;
         }
     }
 

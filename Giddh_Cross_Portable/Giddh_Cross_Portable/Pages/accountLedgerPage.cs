@@ -59,9 +59,12 @@ namespace Giddh_Cross_Portable.Pages
                 HasUnevenRows = true,
                 RowHeight = -1,
                 ItemsSource = ledgerList,
-                ItemTemplate = new DataTemplate(typeof(aLedgerInsideCell)),
-                GroupHeaderTemplate = new DataTemplate(typeof(ledgerGroupHeaderCell))
+                ItemTemplate = new DataTemplate(typeof(aLedgerInsideCell))
             };
+            if (Device.OS != TargetPlatform.WinPhone)
+                transactionList.GroupHeaderTemplate = new DataTemplate(typeof(HeaderCell));
+            else
+                transactionList.GroupHeaderTemplate = new DataTemplate(typeof(ledgerGroupHeaderCell));
         }
 
         protected override void OnAppearing()

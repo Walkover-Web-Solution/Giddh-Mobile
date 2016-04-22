@@ -42,16 +42,16 @@ namespace Giddh_Cross_Portable.Pages
             var debit = new Label
             {
                 FontSize = 18,
-                HorizontalOptions = LayoutOptions.Start,
-                HorizontalTextAlignment = TextAlignment.End
+                //HorizontalOptions = LayoutOptions.Start,
+                HorizontalTextAlignment = TextAlignment.Start
             };
             debit.SetBinding(Label.TextProperty, "debitAmount");
             debit.BindingContextChanged += Debit_BindingContextChanged;
             var credit = new Label
             {
                 FontSize = 18,
-                HorizontalOptions = LayoutOptions.Start,
-                HorizontalTextAlignment = TextAlignment.End
+                //HorizontalOptions = LayoutOptions.Start,
+                HorizontalTextAlignment = TextAlignment.Start
             };
             credit.SetBinding(Label.TextProperty, "creditAmount");
             credit.BindingContextChanged += Credit_BindingContextChanged;
@@ -59,7 +59,7 @@ namespace Giddh_Cross_Portable.Pages
             {
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { nameLabel, debit, credit }, 
+                Children = { nameLabel, new StackLayout { Orientation = StackOrientation.Vertical, Children = { debit, credit } } },
                 Padding = new Thickness(0,5)
             };
         }
@@ -69,7 +69,10 @@ namespace Giddh_Cross_Portable.Pages
             Label lb = sender as Label;
             lb.Text = (Convert.ToDouble(lb.Text)).ToString("N").Replace(".00", "");
             if (lb.Text.Equals("0"))
+            {
                 lb.Text = "";
+                lb.HeightRequest = 0;
+            }
             else
                 lb.Text = "Cr. " + lb.Text;
         }
@@ -79,7 +82,10 @@ namespace Giddh_Cross_Portable.Pages
             Label lb = sender as Label;
             lb.Text = (Convert.ToDouble(lb.Text)).ToString("N").Replace(".00", "");
             if (lb.Text.Equals("0"))
+            {
                 lb.Text = "";
+                lb.HeightRequest = 0;
+            }
             else
                 lb.Text = "Dr. " + lb.Text;
         }
@@ -99,6 +105,30 @@ namespace Giddh_Cross_Portable.Pages
             {
                 Children = { dateLabel }
                 //Padding = new Thickness(0,10)
+            };
+        }
+    }
+
+    public class HeaderCell : ViewCell
+    {
+        public HeaderCell()
+        {
+            this.Height = 25;
+            var title = new Label
+            {
+                Font = Font.SystemFontOfSize(NamedSize.Small, FontAttributes.Bold),
+                TextColor = Color.White,
+                VerticalOptions = LayoutOptions.Center
+            };
+            title.SetBinding(Label.TextProperty, "Date");
+            View = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = 25,
+                BackgroundColor = Color.FromRgb(52, 152, 218),
+                Padding = 5,
+                Orientation = StackOrientation.Horizontal,
+                Children = { title }
             };
         }
     }

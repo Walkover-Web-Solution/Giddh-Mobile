@@ -14,6 +14,7 @@ namespace Giddh_Cross_Portable.Pages
     {
         public LoginPage()
         {
+            Title = "Giddh Manager";
             //Content = new Button
             //{
             //    Text = "LOGIN",
@@ -28,7 +29,7 @@ namespace Giddh_Cross_Portable.Pages
             {
                 Text = "Google",
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 BorderWidth = 0,
                 BackgroundColor = Color.FromRgb(211, 72, 54),
                 BorderRadius = 5
@@ -45,8 +46,10 @@ namespace Giddh_Cross_Portable.Pages
             btn.Clicked += Btn_Clicked;            
             
             StackLayout stc = new StackLayout();
-            stc.Orientation = StackOrientation.Vertical;
-            stc.HorizontalOptions = LayoutOptions.CenterAndExpand;
+            stc.Padding = new Thickness(15, 0, 15, 0);
+            //stc.BackgroundColor = Color.FromRgb(211, 72, 54);
+            //stc.Orientation = StackOrientation.Vertical;
+            //stc.HorizontalOptions = LayoutOptions.CenterAndExpand;
             stc.VerticalOptions = LayoutOptions.CenterAndExpand;
             stc.Children.Add(btn);
             //stc.Children.Add(twitterBtn);

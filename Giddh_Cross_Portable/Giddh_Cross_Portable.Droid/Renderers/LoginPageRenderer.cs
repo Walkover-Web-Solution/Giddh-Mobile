@@ -78,6 +78,7 @@ namespace Giddh_Cross_Portable.Droid.Renderers
             authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
             redirectUrl: new Uri("https://www.googleapis.com/plus/v1/people/me"),
             getUsernameAsync: null);
+            auth.Title = "Giddh Manager";
             auth.AllowCancel = allowCancel;
             auth.ClearCookiesBeforeLogin = true;
             auth.Completed += Auth_Completed;

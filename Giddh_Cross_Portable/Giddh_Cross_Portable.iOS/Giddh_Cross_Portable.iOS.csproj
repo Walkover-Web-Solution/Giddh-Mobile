@@ -144,6 +144,10 @@
     <BundleResource Include="Resources\Images.xcassets\Contents.json" />
     <BundleResource Include="Resources\Images.xcassets\WideLogo.scale-240.imageset\Contents.json" />
     <BundleResource Include="Resources\Images.xcassets\WideLogo.scale-240.imageset\WideLogo.scale-240.png" />
+    <BundleResource Include="Resources\business.png" />
+    <BundleResource Include="Resources\business%402x.png" />
+    <BundleResource Include="Resources\computer.png" />
+    <BundleResource Include="Resources\social.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

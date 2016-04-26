@@ -45,7 +45,8 @@ namespace Giddh_Cross_Portable.Pages
             {
                 BackgroundColor = Color.FromRgb(245, 246, 239),
                 HasUnevenRows = true,
-                RowHeight = -1                               
+                RowHeight = -1,
+				Footer = ""
             };
             companyListView.ItemTapped += CompanyListView_ItemTapped;
             companyListView.ItemTemplate = new DataTemplate(typeof(companyCell));

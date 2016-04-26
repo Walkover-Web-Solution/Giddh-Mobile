@@ -44,7 +44,7 @@ namespace Giddh_Cross_Portable.iOS.Renderers
             auth = new OAuth2Authenticator(clientId: "641015054140-5p4laf3lbjvda9bmi94rvcs6m9q13q5v.apps.googleusercontent.com",
             scope: "https://www.googleapis.com/auth/userinfo.email",
             authorizeUrl: new Uri("https://accounts.google.com/o/oauth2/auth"),
-            redirectUrl: new Uri("https://www.googleapis.com/plus/v1/people/me"),
+            redirectUrl: new Uri("https://www.giddh.com"),
             getUsernameAsync: null);
             auth.ClearCookiesBeforeLogin = true;
             auth.AllowCancel = true;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace Giddh_Cross_Portable.Pages
 {
@@ -29,13 +30,17 @@ namespace Giddh_Cross_Portable.Pages
             {                
                 //this.BackgroundColor = Color.White; 
                 createDateStack();
-                this.Children.Add(createReportsView());
+				this.Children.Add(createReportsView());
                 this.Children.Add(createFirstPage(true));
                 this.Children.Add(acntPage);
+				this.Children[0].Icon = @"business.png";
+				this.Children[1].Icon = @"computer.png";
+				this.Children[2].Icon = @"social.png";
+				//this.Children[0].Icon = @"\Assets\business.png";
             }
             catch (Exception ex)
             {
-
+				Debug.WriteLine (ex.Message);
             }
         }
 
@@ -145,23 +150,31 @@ namespace Giddh_Cross_Portable.Pages
             this.Children.Add(createReportsView());
             this.Children.Add(createFirstPage());
             this.Children.Add(acntPage);
+			this.Children[0].Icon = @"business.png";
+			this.Children[1].Icon = @"computer.png";
+			this.Children[2].Icon = @"social.png";
             this.CurrentPage = this.Children[1];
         }
 
         private ContentPage createFirstPage(bool reset = false)
         {
-            ContentPage newView = new ContentPage();
+            ContentPage newView = new ContentPage()
+			{
+				Title = "trialbalance"
+			};
             try
             {
                 
-                newView.Title = "trialbalance";
+                //newView.Title = "trialbalance";
+				//newView.Icon = "business.png";
                 newView.Style = new Style(typeof(Label));
                 firstGroupList = new ListView()
                 {
                     RowHeight = 120,
                     ItemsSource = Constants.GWTrialBalance,
                     VerticalOptions = LayoutOptions.Start,
-                    IsEnabled = true
+                    IsEnabled = true,
+					Footer = ""
                 };
                 firstGroupList.ItemTemplate = new DataTemplate(typeof(trialBalanceCell));
                 StackLayout firstStack = new StackLayout()
@@ -253,7 +266,8 @@ namespace Giddh_Cross_Portable.Pages
             ListView details = new ListView()
             {
                 IsEnabled = false,
-                HasUnevenRows = true
+                HasUnevenRows = true,
+				Footer = ""
             };
             details.ItemTemplate = new DataTemplate(typeof(reportsCell));
             details.ItemsSource = Constants.reportsList;

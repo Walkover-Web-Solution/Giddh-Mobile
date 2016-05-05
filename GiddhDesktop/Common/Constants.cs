@@ -23,5 +23,6 @@ namespace GiddhDesktop.Common
         public static groupTrialBalance bankDetail { get; set; }
 
         public static ObservableCollection<accountDetail> accountList { get; set; }
+        public static ObservableCollection<accountWithParent> groupAccountList { get; set; }
     }
 }

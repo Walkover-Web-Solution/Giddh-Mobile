@@ -31,8 +31,8 @@ namespace GiddhDesktop.Common.Services
             }
             catch (Exception ex)
             {
-                response.message = "No user found";
-                response.status = "failure";
+                response.message = ex.Message;
+                response.status = "Exception";
                 return response;
             }
             if (response.status.ToLower().Equals("success"))
@@ -120,6 +120,7 @@ namespace GiddhDesktop.Common.Services
                 Constants.accountList = new ObservableCollection<accountDetail>();
                 var gdetail = JsonConvert.DeserializeObject<List<groupDetail>>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 filterAccounts(gdetail);
+                Constants.accountList = new ObservableCollection<accountDetail>(Constants.accountList.OrderBy(x => x.parentGroupName).ToList());
             }
             return response;
 
@@ -136,6 +137,7 @@ namespace GiddhDesktop.Common.Services
                         foreach (accountDetail account in group.accounts)
                         {
                             account.parentGroupUniqueName = group.uniqueName;
+                            account.parentGroupName = group.name;
                             account.name = account.name.TrimEnd();
                             Constants.accountList.Add(account);
                         }
@@ -175,6 +177,13 @@ namespace GiddhDesktop.Common.Services
             {
                 var aLedger = JsonConvert.DeserializeObject<accountLedger>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 aLedger.acDetail = acntDetail;
+                foreach (var ledger in aLedger.ledgers)
+                {
+                    foreach (var transaction in ledger.transactions)
+                    {
+                        transaction.entryDate = ledger.entryDate;
+                    }
+                }
                 return aLedger;
             }
             else

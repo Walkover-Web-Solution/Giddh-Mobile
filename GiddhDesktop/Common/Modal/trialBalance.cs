@@ -101,8 +101,16 @@ namespace GiddhDesktop.Common.Modal
         public string companyName { get; set; }
         public string address { get; set; }
         public string parentGroupUniqueName { get; set; }
+        public string parentGroupName { get; set; }
 
         public string NameSort { get { if (string.IsNullOrWhiteSpace(name) || name.Length == 0) return "?"; return name[0].ToString().ToUpper(); } }
+    }
+
+    public class accountWithParent
+    {
+        public string name { get; set; }
+        public string uniqueName { get; set; }
+        public ObservableCollection<accountDetail> accountList { get; set; }
     }
 
     public class Grouping<K, T> : ObservableCollection<T>
@@ -149,6 +157,7 @@ namespace GiddhDesktop.Common.Modal
         public Role particular { get; set; }
         public double amount { get; set; }
         public string type { get; set; }
+        public string entryDate { get; set; }
 
     }
 

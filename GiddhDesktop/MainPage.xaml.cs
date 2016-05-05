@@ -41,8 +41,10 @@ namespace GiddhDesktop
 
         private async void googleClick_Event(object sender, RoutedEventArgs e)
         {
+            Button btn = sender as Button;
             try
             {
+                
                 String GoogleURL = "https://accounts.google.com/o/oauth2/auth?client_id=" +
                     Uri.EscapeDataString(googleClientId) +
                     "&redirect_uri=" + Uri.EscapeDataString(googleRedirectUri) +
@@ -58,7 +60,7 @@ namespace GiddhDesktop
                 if (WebAuthenticationResult.ResponseStatus == WebAuthenticationStatus.Success)
                 {
                     //googleButton.IsEnabled = false;
-                    Button btn = sender as Button;
+                    
                     btn.IsEnabled = false;
                     var code = GetCode(WebAuthenticationResult.ResponseData);
                     var serviceRequest = await GetToken(code);
@@ -71,20 +73,27 @@ namespace GiddhDesktop
                         //await dialog.ShowAsync();
                     }
                     else
-                    { btn.IsEnabled = true; }
+                    {
+                        btn.IsEnabled = true;
+                        var dialog = new MessageDialog(response.message,response.status);
+                        await dialog.ShowAsync();
+                    }
                     //OutputToken(WebAuthenticationResult.ResponseData.ToString());
                 }
                 else if (WebAuthenticationResult.ResponseStatus == WebAuthenticationStatus.ErrorHttp)
                 {
-                   // OutputToken("HTTP Error returned by AuthenticateAsync() : " + WebAuthenticationResult.ResponseErrorDetail.ToString());
+                    btn.IsEnabled = true;
+                    // OutputToken("HTTP Error returned by AuthenticateAsync() : " + WebAuthenticationResult.ResponseErrorDetail.ToString());
                 }
                 else
                 {
+                    btn.IsEnabled = true;
                     //OutputToken("Error returned by AuthenticateAsync() : " + WebAuthenticationResult.ResponseStatus.ToString());
                 }
             }
             catch (Exception Error)
             {
+                btn.IsEnabled = true;
                 //rootPage.NotifyUser(Error.Message, NotifyType.ErrorMessage);
             }
         }

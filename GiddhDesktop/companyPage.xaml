@@ -12,25 +12,72 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="36">
+        <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24"
+                  SelectionChanged="companyComboBox_SelectionChanged" BorderThickness="0">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Hub Header="Company Name" Grid.Row="1">            
-            <HubSection Header="Accounts" >
+        <Hub x:Name="ledgersHub" Header="" Grid.Row="1">            
+            <HubSection x:Name="accountSection" Header="Accounts" DataContext="{Binding}" Width="Auto">
                 <DataTemplate>
-                    <Grid/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <AutoSuggestBox Header="Search" Grid.Row="0" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event"/>
+                        <ListView Grid.Row="1" ItemsSource="{Binding}" Header="{Binding name}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26"/>
+                                        <ListView ItemsSource="{Binding accountList}" ItemClick="getLedger_Event">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel DataContext="{Binding}" Orientation="Horizontal" Tapped="accountStackTapped_Event">
+                                                        <TextBlock Text="-" FontWeight="ExtraBold"/>
+                                                        <TextBlock Text="{Binding name}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="Details">
-                
-            </HubSection>
-            <HubSection Header="Companies">
+            <HubSection x:Name="ledgerSection" DataContext="{Binding}">
                 <DataTemplate>
-                    <Grid/>
+                    <ListView ItemsSource="{Binding ledgers}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding transactions}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" DataContext="{Binding}">
+                                                <DatePicker Grid.Column="0" Grid.Row="0" DayFormat="{}{day.integer(2)}" MonthFormat="{}{month.integer(2)}" Margin="0,114" Width="57" Date="{Binding entryDate}"/>
+                                                <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding particular.name}"/>
+                                                <TextBox Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Text="{Binding amount}"/>
+                                            </StackPanel>
+                                            <!--<Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" DataContext="{Binding}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                            </Grid>-->
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </DataTemplate>
             </HubSection>
         </Hub>

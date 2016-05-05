@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="googleButton" Content="Google" Background="#FFF44336" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Foreground="White" Click="googleClick_Event"/>
+        <Button x:Name="googleButton" Content="Google" Background="#FFF44336" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="White" Click="googleClick_Event" Margin="60,0"/>
     </Grid>
 </Page>

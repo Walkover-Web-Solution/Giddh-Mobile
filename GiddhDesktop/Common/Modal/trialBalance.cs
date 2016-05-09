@@ -139,6 +139,8 @@ namespace GiddhDesktop.Common.Modal
         public double debitTotal { get; set; }
         public balance balance { get; set; }
         public ObservableCollection<ledger> ledgers { get; set; }
+        public ObservableCollection<transaction> debitTransactions { get; set; }
+        public ObservableCollection<transaction> creditTransactions { get; set; }
     }
 
     public class ledger
@@ -150,6 +152,8 @@ namespace GiddhDesktop.Common.Modal
         public Voucher voucher { get; set; }
         public string tag { get; set; }
         public string description { get; set; }
+        public ObservableCollection<transaction> debitTransactions { get; set; }
+        public ObservableCollection<transaction> creditTransactions { get; set; }
     }
 
     public class transaction
@@ -158,7 +162,11 @@ namespace GiddhDesktop.Common.Modal
         public double amount { get; set; }
         public string type { get; set; }
         public string entryDate { get; set; }
-
+        public string ledgerUniqueName { get; set; }
+        public double ledgerVoucherNo { get; set; }
+        public Voucher ledgerVoucher { get; set; }
+        public string ledgerTag { get; set; }
+        public string ledgerDiscription { get; set; }
     }
 
     public class Voucher

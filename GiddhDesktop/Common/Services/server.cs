@@ -155,11 +155,17 @@ namespace GiddhDesktop.Common.Services
         }
 
 
-        public static async Task<accountLedger> getAccountLedgers(accountDetail acntDetail)
+        public static async Task<accountLedger> getAccountLedgers(accountDetail acntDetail,string fromDate = "",string toDate = "")
         {
+            if (string.IsNullOrEmpty(fromDate))
+            {
+                fromDate = DateTime.Now.AddMonths(-1).ToString("dd-MM-yyyy");
+                toDate = DateTime.Now.ToString("dd-MM-yyyy");
+            }
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
             {
-
+                new KeyValuePair<string, string>("fromDate",fromDate),
+                new KeyValuePair<string, string>("toDate",toDate)
             };
             KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
             //addUserIDType(values);
@@ -176,12 +182,31 @@ namespace GiddhDesktop.Common.Services
             if (response.status.ToLower().Equals("success"))
             {
                 var aLedger = JsonConvert.DeserializeObject<accountLedger>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                aLedger.creditTransactions = new ObservableCollection<transaction>();
+                aLedger.debitTransactions = new ObservableCollection<transaction>();
                 aLedger.acDetail = acntDetail;
                 foreach (var ledger in aLedger.ledgers)
                 {
+                    ledger.creditTransactions = new ObservableCollection<transaction>();
+                    ledger.debitTransactions = new ObservableCollection<transaction>();
                     foreach (var transaction in ledger.transactions)
                     {
                         transaction.entryDate = ledger.entryDate;
+                        transaction.ledgerUniqueName = ledger.uniqueName;
+                        transaction.ledgerDiscription = ledger.description;
+                        transaction.ledgerTag = ledger.tag;
+                        transaction.ledgerVoucher = ledger.voucher;
+                        transaction.ledgerVoucherNo = ledger.voucherNo;
+                        if (transaction.type.ToLower().Equals("credit"))
+                        {
+                            ledger.creditTransactions.Add(transaction);
+                            aLedger.creditTransactions.Add(transaction);
+                        }
+                        else if (transaction.type.ToLower().Equals("debit"))
+                        {
+                            ledger.debitTransactions.Add(transaction);
+                            aLedger.debitTransactions.Add(transaction);
+                        }
                     }
                 }
                 return aLedger;

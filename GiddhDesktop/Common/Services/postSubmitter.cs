@@ -49,7 +49,7 @@ namespace GiddhDesktop.Common.Services
 
             HttpResponseMessage response = await httpClient.GetAsync(finalurl);
             //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
-            Debug.WriteLine(domainName + url);
+            Debug.WriteLine(finalurl);
             //response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
             //Debug.WriteLine(url + "--" + responseString);
@@ -84,7 +84,7 @@ namespace GiddhDesktop.Common.Services
             }
             HttpResponseMessage response = await httpClient.GetAsync(finalurl);
             //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
-            Debug.WriteLine(domainName + url);
+            Debug.WriteLine(finalurl);
             response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
             //Debug.WriteLine(url + "--" + responseString);

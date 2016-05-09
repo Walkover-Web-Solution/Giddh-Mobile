@@ -105,6 +105,7 @@
     <Compile Include="Common\Modal\Response.cs" />
     <Compile Include="Common\Modal\trialBalance.cs" />
     <Compile Include="Common\Modal\userObject.cs" />
+    <Compile Include="Common\Services\ConvertersHelper.cs" />
     <Compile Include="Common\Services\postSubmitter.cs" />
     <Compile Include="Common\Services\server.cs" />
     <Compile Include="companyPage.xaml.cs">

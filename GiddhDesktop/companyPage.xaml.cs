@@ -128,12 +128,18 @@ namespace GiddhDesktop
         private async void accountStackTapped_Event(object sender, TappedRoutedEventArgs e)
         {
             StackPanel s = sender as StackPanel;
-            accountLedger al = await server.getAccountLedgers((accountDetail)s.DataContext);
+            Constants.selectedAccount = (accountDetail)s.DataContext;
+            accountLedger al = await server.getAccountLedgers(Constants.selectedAccount);
             //HubSection hs = new HubSection();
             //hs.Header = al.acDetail.name;
             //ledgerSection.Header = al.acDetail.name;
             ledgerSection.DataContext = al;
             //hs.ContentTemplate = accountLedgerView as DataTemplate;
+        }
+
+        private async void goButton_CLick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
     

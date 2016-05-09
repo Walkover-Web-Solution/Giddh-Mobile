@@ -84,17 +84,23 @@ namespace GiddhDesktop
                 {
                     btn.IsEnabled = true;
                     // OutputToken("HTTP Error returned by AuthenticateAsync() : " + WebAuthenticationResult.ResponseErrorDetail.ToString());
+                    var dialog = new MessageDialog(WebAuthenticationResult.ResponseErrorDetail.ToString(), "Error");
+                    await dialog.ShowAsync();
                 }
                 else
                 {
                     btn.IsEnabled = true;
                     //OutputToken("Error returned by AuthenticateAsync() : " + WebAuthenticationResult.ResponseStatus.ToString());
+                    var dialog = new MessageDialog(WebAuthenticationResult.ResponseStatus.ToString(), "Error");
+                    await dialog.ShowAsync();
                 }
             }
             catch (Exception Error)
             {
                 btn.IsEnabled = true;
                 //rootPage.NotifyUser(Error.Message, NotifyType.ErrorMessage);
+                var dialog = new MessageDialog(Error.Message, "Error");
+                await dialog.ShowAsync();
             }
         }
 

@@ -61,19 +61,38 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
+                        <!--#region date section to get ledger-->
                         <StackPanel Orientation="Horizontal" Grid.Row="0" BorderThickness="0" BorderBrush="Transparent" Margin="0,0,0,10">
                             <CalendarDatePicker x:Name="fromDatePicker" BorderThickness="0,0,0,1"/>
                             <TextBlock Text="to" VerticalAlignment="Center" Margin="5,0"/>
                             <CalendarDatePicker x:Name="toDatePicker" BorderThickness="0,0,0,1"/>
                             <Button Content="Go" Click="goButton_CLick" Margin="5,0,0,0"/>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                        <!--#endregion-->
+                        
+                        <!--#region Create entry from here-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                            <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
+                            <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
+                            <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                            <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
+                            <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
+                            <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
+                        </StackPanel>
+                        <!--#endregion-->
+                        
+                        <!--#region gridview header-->
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
                                 <Border Background="#FF4D3F3F" Padding="10">
                                     <TextBlock Text="Debit (Dr)" Foreground="White" FontWeight="Bold"/>
                                 </Border>
@@ -88,7 +107,7 @@
                                     <TextBlock Grid.Column="2" Text="Amount" FontWeight="SemiBold"/>
                                 </Grid>
                             </StackPanel>
-                        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
                             <Border Background="#FF4D3F3F" Padding="10">
                                 <TextBlock Text="Credit (Cr)" Foreground="White" FontWeight="Bold"/>
                             </Border>
@@ -103,12 +122,10 @@
                                 <TextBlock Grid.Column="2" Text="Amount" FontWeight="SemiBold"/>
                             </Grid>
                         </StackPanel>
-                        <GridView ItemsSource="{Binding debitTransactions}" Grid.Row="2" Grid.Column="0" BorderThickness="0,0,1,0">
-                            <GridView.HeaderTemplate>
-                                <DataTemplate>
-                                    
-                                </DataTemplate>
-                            </GridView.HeaderTemplate>
+                        <!--#endregion-->
+                        
+                        <!--#region debit transactions-->
+                        <GridView ItemsSource="{Binding debitTransactions}" Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" Padding="5" SelectionMode="Single" BorderBrush="#FFBDBDBD">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Horizontal"  MaximumRowsOrColumns="1"></ItemsWrapGrid>
@@ -124,12 +141,10 @@
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
-                        <GridView ItemsSource="{Binding creditTransactions}" Grid.Row="2" Grid.Column="1">
-                            <GridView.HeaderTemplate>
-                                <DataTemplate>
-                                    
-                                </DataTemplate>
-                            </GridView.HeaderTemplate>
+                        <!--#endregion-->
+                        
+                        <!--#region credit transactions-->
+                        <GridView ItemsSource="{Binding creditTransactions}" Grid.Row="3" Grid.Column="1" Padding="5">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Horizontal"  MaximumRowsOrColumns="1"></ItemsWrapGrid>
@@ -145,6 +160,8 @@
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
+                        <!--#endregion-->
+                        
                     </Grid>
                 </DataTemplate>
             </HubSection>

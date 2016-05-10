@@ -164,8 +164,8 @@ namespace GiddhDesktop.Common.Services
             }
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("fromDate",fromDate),
-                new KeyValuePair<string, string>("toDate",toDate)
+                new KeyValuePair<string, string>("from",fromDate),
+                new KeyValuePair<string, string>("to",toDate)
             };
             KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
             //addUserIDType(values);

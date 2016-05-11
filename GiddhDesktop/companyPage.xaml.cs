@@ -125,21 +125,21 @@ namespace GiddhDesktop
             accountLedger al = await server.getAccountLedgers((accountDetail)e.ClickedItem);
         }
 
-        private async void accountStackTapped_Event(object sender, TappedRoutedEventArgs e)
+        private void accountStackTapped_Event(object sender, TappedRoutedEventArgs e)
         {
             StackPanel s = sender as StackPanel;
             Constants.selectedAccount = (accountDetail)s.DataContext;
-            accountLedger al = await server.getAccountLedgers(Constants.selectedAccount);
-            //HubSection hs = new HubSection();
-            //hs.Header = al.acDetail.name;
-            //ledgerSection.Header = al.acDetail.name;
-            ledgerSection.DataContext = al;
-            //hs.ContentTemplate = accountLedgerView as DataTemplate;
+            this.MainFrame.Navigate(typeof(accountLedgerPage), Constants.selectedAccount);
         }
 
         private async void goButton_CLick(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainSplitView.IsPaneOpen = !mainSplitView.IsPaneOpen;
         }
     }
     

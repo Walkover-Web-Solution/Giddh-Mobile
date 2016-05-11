@@ -76,12 +76,11 @@ namespace GiddhDesktop
                     //TODO: Load state from previously suspended application
                 }
 
-                dBPath = Path.Combine(
-                    Windows.Storage.ApplicationData.Current.LocalFolder.Path, "giddh.sqlite");
-                using (var db = new SQLite.)
+                //dBPath = Path.Combine(
+                //    Windows.Storage.ApplicationData.Current.LocalFolder.Path, "giddh.sqlite");
 
-                    // Place the frame in the current Window
-                    Window.Current.Content = rootFrame;
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
             }
 
             if (e.PrelaunchActivated == false)

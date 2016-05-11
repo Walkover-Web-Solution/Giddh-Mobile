@@ -12,49 +12,97 @@
         <converterss:convertStringToDate x:Key="stringToDate"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="None">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="mainSplitView.IsPaneOpen" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Compact">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="480"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="mainSplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="mainSplitView.DisplayMode" Value="CompactInline"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="mainSplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="mainSplitView.DisplayMode" Value="Inline"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Grid.Row="0" Grid.Column="0" Click="homeButton_Click">
+                <StackPanel>
+                    <SymbolIcon Symbol="Home"/>
+                </StackPanel>
+            </Button>
+            <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24" Grid.Column="0"
                   SelectionChanged="companyComboBox_SelectionChanged" BorderThickness="0">
-            <ComboBox.ItemTemplate>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <SplitView x:Name="mainSplitView" Grid.Row="1" IsPaneOpen="True" Grid.Column="0" DisplayMode="Inline">
+            <SplitView.Pane>
+                <Grid x:Name="accountSection" DataContext="{Binding}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <AutoSuggestBox Grid.Row="0" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event"/>
+                    <ListView Grid.Row="1" ItemsSource="{Binding}" Header="{Binding name}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26"/>
+                                    <ListView ItemsSource="{Binding accountList}" ItemClick="getLedger_Event">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel DataContext="{Binding}" Orientation="Horizontal" Tapped="accountStackTapped_Event">
+                                                    <TextBlock Text="-" FontWeight="ExtraBold"/>
+                                                    <TextBlock Text="{Binding name}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </SplitView.Pane>
+            <Frame x:Name="MainFrame" Padding="10"/>
+        </SplitView>
+        <!--<Hub x:Name="ledgersHub" Header="" Grid.Row="1">
+            <HubSection Header="Accounts" DataContext="{Binding}" Width="350" HorizontalContentAlignment="Stretch">
                 <DataTemplate>
-                    <TextBlock Text="{Binding name}"/>
+                    
                 </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Hub x:Name="ledgersHub" Header="" Grid.Row="1">
-            <HubSection x:Name="accountSection" Header="Accounts" DataContext="{Binding}" Width="350" HorizontalContentAlignment="Stretch">
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <AutoSuggestBox Grid.Row="0" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event"/>
-                        <ListView Grid.Row="1" ItemsSource="{Binding}" Header="{Binding name}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26"/>
-                                        <ListView ItemsSource="{Binding accountList}" ItemClick="getLedger_Event">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel DataContext="{Binding}" Orientation="Horizontal" Tapped="accountStackTapped_Event">
-                                                        <TextBlock Text="-" FontWeight="ExtraBold"/>
-                                                        <TextBlock Text="{Binding name}"/>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </DataTemplate>
-            </HubSection>
+            </HubSection>            
             <HubSection x:Name="ledgerSection" DataContext="{Binding}" Header="{Binding acDetail.name}">
                 <DataTemplate>
                     <Grid DataContext="{Binding}">
@@ -69,29 +117,43 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <!--#region date section to get ledger-->
+                        --><!--#region date section to get ledger--><!--
                         <StackPanel Orientation="Horizontal" Grid.Row="0" BorderThickness="0" BorderBrush="Transparent" Margin="0,0,0,10">
                             <CalendarDatePicker x:Name="fromDatePicker" BorderThickness="0,0,0,1"/>
                             <TextBlock Text="to" VerticalAlignment="Center" Margin="5,0"/>
                             <CalendarDatePicker x:Name="toDatePicker" BorderThickness="0,0,0,1"/>
                             <Button Content="Go" Click="goButton_CLick" Margin="5,0,0,0"/>
                         </StackPanel>
-                        <!--#endregion-->
+                        --><!--#endregion-->
                         
-                        <!--#region Create entry from here-->
-                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                            <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
-                            <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
-                            <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                            <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
-                            <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
-                            <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
-                        </StackPanel>
-                        <!--#endregion-->
+                        <!--#region Create entry from here--><!--
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Make Entry" Grid.Row="0" Foreground="Gray" FontSize="11" Margin="0,5"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">                                
+                                <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
+                                <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
+                                <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                <CalendarDatePicker BorderThickness="0" DateFormat="{}{day.integer}/{month.integer}/{year.full}" IsHitTestVisible="True"/>
+                                <TextBox VerticalAlignment="Center" PlaceholderText="Particular" Width="300" BorderThickness="0"/>
+                                <TextBox VerticalAlignment="Center" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount"/>
+                            </StackPanel>
+                            <Button Content="ADD" Grid.Row="2"/>
+                        </Grid>
                         
-                        <!--#region gridview header-->
+                        --><!--#endregion-->
+                        
+                        <!--#region gridview header--><!--
                         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
                                 <Border Background="#FF4D3F3F" Padding="10">
                                     <TextBlock Text="Debit (Dr)" Foreground="White" FontWeight="Bold"/>
@@ -122,9 +184,9 @@
                                 <TextBlock Grid.Column="2" Text="Amount" FontWeight="SemiBold"/>
                             </Grid>
                         </StackPanel>
-                        <!--#endregion-->
+                        --><!--#endregion-->
                         
-                        <!--#region debit transactions-->
+                        <!--#region debit transactions--><!--
                         <GridView ItemsSource="{Binding debitTransactions}" Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" Padding="5" SelectionMode="Single" BorderBrush="#FFBDBDBD">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -141,9 +203,9 @@
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
-                        <!--#endregion-->
+                        --><!--#endregion-->
                         
-                        <!--#region credit transactions-->
+                        <!--#region credit transactions--><!--
                         <GridView ItemsSource="{Binding creditTransactions}" Grid.Row="3" Grid.Column="1" Padding="5">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -160,12 +222,12 @@
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
-                        <!--#endregion-->
+                        --><!--#endregion--><!--
                         
                     </Grid>
                 </DataTemplate>
             </HubSection>
-        </Hub>
+        </Hub>-->
 
     </Grid>
 </Page>

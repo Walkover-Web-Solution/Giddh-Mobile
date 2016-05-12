@@ -1,8 +1,10 @@
-﻿using System;
+﻿using GiddhDesktop.Common.Modal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 
@@ -10,8 +12,7 @@ namespace GiddhDesktop.Common.Services
 {
     public class convertStringToDate : IValueConverter
     {
-        public object Convert(object value, Type targetType,
-        object parameter, string language)
+        public object Convert(object value, Type targetType,object parameter, string language)
         {
             string[] dates = value.ToString().Split('-');
             int[] dateInt = { System.Convert.ToInt32(dates[2]), System.Convert.ToInt32(dates[1]), System.Convert.ToInt32(dates[0]) };            
@@ -20,8 +21,42 @@ namespace GiddhDesktop.Common.Services
             return dto;
         }
 
-        public object ConvertBack(object value, Type targetType,
-        object parameter, string language)
+        public object ConvertBack(object value, Type targetType,object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class showNameWithUniqueName : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            accountDetail ac = value as accountDetail;
+            string str = ac.name + " (" + ac.uniqueName + ")";
+            return str;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class sharedEntityToBool : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            string str = value.ToString();
+            if (string.IsNullOrEmpty(str))
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+
+            }            
+            return str;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

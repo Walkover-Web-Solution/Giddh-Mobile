@@ -73,7 +73,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <AutoSuggestBox Grid.Row="0" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event"/>
+                    <AutoSuggestBox Grid.Row="0" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event" QueryIcon="Find"/>
                     <ListView Grid.Row="1" ItemsSource="{Binding}" Header="{Binding name}">
                         <ListView.ItemTemplate>
                             <DataTemplate>

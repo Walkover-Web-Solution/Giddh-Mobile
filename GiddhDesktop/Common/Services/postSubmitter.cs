@@ -137,7 +137,7 @@ namespace GiddhDesktop.Common.Services
             Debug.WriteLine(finalurl);
             response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine(url + "--" + responseString);
+            Debug.WriteLine(url + "--" + responseString);
             RJson = JsonConvert.DeserializeObject<ResponseA>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             return RJson;
         }

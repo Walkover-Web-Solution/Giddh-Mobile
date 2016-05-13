@@ -76,7 +76,7 @@ namespace GiddhDesktop.Views
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            sender.Text = ((accountDetail)args.SelectedItem).name;
+            //sender.Text = ((accountDetail)args.SelectedItem).name;
             sender.DataContext = (accountDetail)args.SelectedItem;
         }
     }

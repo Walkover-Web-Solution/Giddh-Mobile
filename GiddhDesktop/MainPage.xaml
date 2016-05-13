@@ -7,7 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="googleButton" Content="Google" Background="#FFF44336" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="White" Click="googleClick_Event" Margin="60,0"/>
+    <Grid Background="#FF56BC8A">
+        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="Assets/login_bg.png"/>
+        <Border CornerRadius="5" Background="#FFF44336" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.ZIndex="1">
+            <Button x:Name="googleButton" Foreground="White" Click="googleClick_Event" Background="{x:Null}" BorderBrush="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sign in with Google"/>
+                </StackPanel>
+            </Button>
+        </Border>
     </Grid>
 </Page>

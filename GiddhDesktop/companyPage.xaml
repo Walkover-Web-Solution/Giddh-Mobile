@@ -51,40 +51,49 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Grid.Row="0" Grid.Column="0" Click="homeButton_Click">
+            <Button Grid.Row="0" Grid.Column="0" Click="homeButton_Click" Visibility="Collapsed">
                 <StackPanel>
                     <SymbolIcon Symbol="Home"/>
                 </StackPanel>
             </Button>
-            <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24" Grid.Column="0"
+            <!--<ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24" Grid.Column="0"
                   SelectionChanged="companyComboBox_SelectionChanged" BorderThickness="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-            </ComboBox>
+            </ComboBox>-->
         </StackPanel>
 
         <SplitView x:Name="mainSplitView" Grid.Row="1" IsPaneOpen="True" Grid.Column="0" DisplayMode="Inline">
             <SplitView.Pane>
-                <Grid x:Name="accountSection" DataContext="{Binding}">
+                <Grid x:Name="accountSection" DataContext="{Binding}" Background="#FF424242">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <AutoSuggestBox Grid.Row="0" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event" QueryIcon="Find"/>
-                    <ListView Grid.Row="1" ItemsSource="{Binding}" Header="{Binding name}">
+                    <ComboBox x:Name="companyComboBox" Grid.Row="0" FontSize="24" Grid.Column="0"
+                  SelectionChanged="companyComboBox_SelectionChanged" BorderThickness="0" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <AutoSuggestBox Grid.Row="1" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event" QueryIcon="Find" Background="#FFD1D1D1" Foreground="White"/>
+                    <ListView Grid.Row="2" ItemsSource="{Binding}" Header="{Binding name}" Background="{x:Null}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26"/>
+                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26" Foreground="#FFD4D4D4"/>
                                     <ListView ItemsSource="{Binding accountList}" ItemClick="getLedger_Event">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel DataContext="{Binding}" Orientation="Horizontal" Tapped="accountStackTapped_Event">
-                                                    <TextBlock Text="-" FontWeight="ExtraBold"/>
-                                                    <TextBlock Text="{Binding name}"/>
+                                                    <TextBlock Text="-" FontWeight="ExtraBold" Foreground="#FFD4D4D4"/>
+                                                    <TextBlock Text="{Binding name}" Foreground="#FFD4D4D4"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>

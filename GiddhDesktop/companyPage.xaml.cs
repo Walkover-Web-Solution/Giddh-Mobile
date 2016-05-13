@@ -37,6 +37,7 @@ namespace GiddhDesktop
         {
             await server.companies();
             setCompanies();
+            server.getRoles();
         }
 
         public void setCompanies()

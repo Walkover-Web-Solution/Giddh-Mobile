@@ -45,16 +45,19 @@ namespace GiddhDesktop.Common.Services
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            string str = value.ToString();
-            if (string.IsNullOrEmpty(str))
+            company str = (company)value;
+            if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
             {
+                return Visibility.Collapsed;
+            }
+            if (string.IsNullOrEmpty(str.sharedEntity))
+            {                
                 return Visibility.Visible;
             }
             else
             {
-
-            }            
-            return str;
+                return Visibility.Collapsed;
+            }
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

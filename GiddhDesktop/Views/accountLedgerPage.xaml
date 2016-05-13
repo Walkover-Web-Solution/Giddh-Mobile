@@ -37,7 +37,7 @@
             <!--#endregion-->
 
             <!--#region Create entry from here-->
-            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10" Padding="10" BorderThickness="2" BorderBrush="LightGray" Background="LightGray">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10" Padding="10" BorderThickness="2" BorderBrush="LightGray" Background="LightGray" Visibility="{x:Bind companySelected,Converter={StaticResource sharedEntityToBool}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>

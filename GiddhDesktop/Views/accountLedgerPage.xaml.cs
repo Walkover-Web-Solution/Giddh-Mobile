@@ -26,10 +26,11 @@ namespace GiddhDesktop.Views
     public sealed partial class accountLedgerPage : Page
     {
         accountDetail acDetail = new accountDetail();
-
+        company companySelected = new company();
         public accountLedgerPage()
         {
             this.InitializeComponent();
+            companySelected = Constants.selectedCompany;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

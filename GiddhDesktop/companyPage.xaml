@@ -66,7 +66,7 @@
             </ComboBox>-->
         </StackPanel>
 
-        <SplitView x:Name="mainSplitView" Grid.Row="1" IsPaneOpen="True" Grid.Column="0" DisplayMode="Inline">
+        <SplitView x:Name="mainSplitView" Grid.Row="1" IsPaneOpen="True" Grid.Column="0" Grid.ColumnSpan="2" DisplayMode="Inline">
             <SplitView.Pane>
                 <Grid x:Name="accountSection" DataContext="{Binding}" Background="#FF424242">
                     <Grid.RowDefinitions>

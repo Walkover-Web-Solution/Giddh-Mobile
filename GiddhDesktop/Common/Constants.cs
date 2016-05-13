@@ -13,6 +13,7 @@ namespace GiddhDesktop.Common
         public static userObject userObj { get; set; }
 
         public static List<company> companies { get; set; }
+        public static List<Roles> roles { get; set; }
         public static company selectedCompany { get; set; }
         public static trialBalance trialBalance { get; set; }
         public static ObservableCollection<groupWise> GWTrialBalance { get; set; }

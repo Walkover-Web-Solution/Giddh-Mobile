@@ -69,6 +69,30 @@ namespace GiddhDesktop.Common.Services
                 Constants.userObj = JsonConvert.DeserializeObject<userObject>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             return response;
         }
+
+        public static async Task<ResponseA> getRoles()
+        {
+            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
+            {
+
+            };
+            KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
+            //addUserIDType(values);
+            //addCountryArray(values);
+            ResponseA response = new ResponseA();
+            try
+            {
+                response = await postSubmitter.SendRequestGETResponseA("roles", values, header);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            Constants.roles = new List<Roles>();
+            Constants.roles = JsonConvert.DeserializeObject<List<Roles>>(response.body.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return response;
+        }
+
         public static async Task<ResponseA> companies()
         {
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>

@@ -19,4 +19,14 @@ namespace GiddhDesktop.Common.Modal
         public string contactNo { get; set; }
         public string uniqueName { get; set; }
     }
+
+    public class voucherType
+    {
+        public string code { get; set; }
+        public string shortCode { get; set; }
+        public string getShortCode(string codee)
+        {
+            return shortCode;
+        }
+    }
 }

@@ -87,7 +87,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="26" Foreground="#FFD4D4D4"/>
+                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="20" Foreground="#FFD4D4D4"/>
                                     <ListView ItemsSource="{Binding accountList}" ItemClick="getLedger_Event">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>

@@ -456,5 +456,68 @@ namespace GiddhDesktop.Common.Services
             setValues(Constants.bankDetail);
         }
         #endregion
+
+        #region entries
+        public static async Task<Response> createNewEntry(ledgerToSend ledger)
+        {
+            string str = JsonConvert.SerializeObject(ledger);
+            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("",JsonConvert.SerializeObject(ledger))
+            };
+            KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
+            Response response = new Response();
+            try
+            {
+                response = await postSubmitter.SendRequestPOSTResponse("company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/ledgers", values, header);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return response;
+        }
+
+        public static async Task<Response> mailLedger(string[] mailRecipient,string fromDate,string toDate)
+        {
+            mailRecipients mr = new mailRecipients() { recipients = mailRecipient };
+            string str = JsonConvert.SerializeObject(mr);
+            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("",JsonConvert.SerializeObject(mr))
+            };
+            KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
+            Response response = new Response();
+            try
+            {
+                response = await postSubmitter.SendRequestPOSTResponse("company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/ledgers/mail?from=" + fromDate + "&to=" + toDate, values, header);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return response;
+        }
+
+        public static async Task<Response> exportLedger(string fromDate, string toDate)
+        {
+            KeyValuePair<string, string> header = new KeyValuePair<string, string>("Auth-Key", Constants.userObj.authKey);
+            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("from",fromDate),
+                new KeyValuePair<string, string>("to",toDate)
+            };
+            Response response = new Response();
+            try
+            {
+                response = await postSubmitter.SendRequestGETResponse("company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/export-ledger", values, header);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return response;
+        }
+        #endregion
     }
 }

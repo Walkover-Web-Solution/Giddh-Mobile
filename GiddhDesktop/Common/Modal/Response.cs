@@ -22,4 +22,12 @@ namespace GiddhDesktop.Common.Modal
         public string message { get; set; }
         public JArray body { get; set; }
     }
+
+    public class ResponseString
+    {
+        public string status { get; set; }
+        public string code { get; set; }
+        public string message { get; set; }
+        public string body { get; set; }
+    }
 }

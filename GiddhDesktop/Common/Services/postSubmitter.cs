@@ -1,11 +1,13 @@
 ﻿using GiddhDesktop.Common.Modal;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +15,7 @@ namespace GiddhDesktop.Common.Services
 {
     class postSubmitter
     {
-        //const string domainName = "http://192.168.1.60:9292/giddh-api/";
+        //const string domainName = "http://192.168.1.105:9292/giddh-api/";
         //const string domainName = "http://apitest.giddh.com/giddh-api/";//"http://54.21.254.1/giddh-api/";
         const string domainName = "http://api.giddh.com/v1/";
 
@@ -97,15 +99,35 @@ namespace GiddhDesktop.Common.Services
             Response RJson = new Response();
             var httpClient = new HttpClient(new HttpClientHandler());
             var content = new FormUrlEncodedContent(values);
-            content.Headers.Add(header.Key, header.Value);
+            var cont = new StringContent(values[0].Value,System.Text.Encoding.UTF8,"application/json");
+            //content.Headers.Add(header.Key, header.Value);
             httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
-            HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await httpClient.PostAsync(domainName + url, cont);
             //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
             Debug.WriteLine(domainName + url);
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
             //Debug.WriteLine(url + "--" + responseString);
-            RJson = JsonConvert.DeserializeObject<Response>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            if (responseString.Contains("success"))
+            {
+                try
+                {
+                    RJson = JsonConvert.DeserializeObject<Response>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                }
+                catch (Exception ex)
+                {
+                    ResponseString rstring = JsonConvert.DeserializeObject<ResponseString>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                    RJson.status = rstring.status;
+                    RJson.message = rstring.body;
+                }
+            }
+            else
+            {
+                RJson = JsonConvert.DeserializeObject<Response>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            }
+            
+
             return RJson;
         }
 
@@ -115,7 +137,7 @@ namespace GiddhDesktop.Common.Services
             ResponseA RJson = new ResponseA();
             var httpClient = new HttpClient(new HttpClientHandler());
             var content = new FormUrlEncodedContent(values);
-            content.Headers.Add(header.Key, header.Value);
+            //content.Headers.Add(header.Key, header.Value);
             httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
             string finalurl = domainName + url;
             if (values.Count > 0)
@@ -137,7 +159,7 @@ namespace GiddhDesktop.Common.Services
             Debug.WriteLine(finalurl);
             response.EnsureSuccessStatusCode();
             var responseString = await response.Content.ReadAsStringAsync();
-            Debug.WriteLine(url + "--" + responseString);
+            //Debug.WriteLine(url + "--" + responseString);
             RJson = JsonConvert.DeserializeObject<ResponseA>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             return RJson;
         }
@@ -147,7 +169,7 @@ namespace GiddhDesktop.Common.Services
             ResponseA RJson = new ResponseA();
             var httpClient = new HttpClient(new HttpClientHandler());
             var content = new FormUrlEncodedContent(values);
-            content.Headers.Add(header.Key, header.Value);
+            //content.Headers.Add(header.Key, header.Value);
             httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
             HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
             //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);

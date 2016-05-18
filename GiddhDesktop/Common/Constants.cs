@@ -29,6 +29,8 @@ namespace GiddhDesktop.Common
         public static ObservableCollection<accountDetail> accountList { get; set; }
         public static ObservableCollection<accountWithParent> groupAccountList { get; set; }
 
+        public static bool permissionAllowed { get; set; }
+
         public static Windows.Data.Xml.Dom.XmlDocument CreateToast(string message)
         {
             var xDoc = new XDocument(

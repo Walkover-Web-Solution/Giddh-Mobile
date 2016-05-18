@@ -134,7 +134,7 @@ namespace GiddhDesktop.Views
             inCaseOfUpdate = string.Empty;
             debitDate.Date = new DateTimeOffset(DateTime.Now);
             debitParticular.Text = "";
-            debitAmount.Text = "0";
+            debitAmount.Text = "";
             voucherTypeCombo.SelectedIndex = 0;
             tagTextBox.Text = "";
             descriptionBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, "");
@@ -145,6 +145,11 @@ namespace GiddhDesktop.Views
 
         private async void createEntryButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Constants.permissionAllowed)
+            {
+                showToastNotification("You don't have sufficient permission to add new entry.");
+                return;
+            }
             ledgerToSend lts = new ledgerToSend();
 
             if (ledgerTransactionss.Count <= 0)
@@ -179,10 +184,12 @@ namespace GiddhDesktop.Views
             lts.tag = tagTextBox.Text;
             Response response = await server.createNewEntry(lts,inCaseOfUpdate);
             if (response.status.ToLower().Equals("success"))
-            {                
+            {
                 getLedger(acDetail);
                 clearButton_Click(sender, e);
             }
+            else
+            { showToastNotification(response.message); }
         }
 
         private async void sendEmailButton_Click(object sender, RoutedEventArgs e)
@@ -191,7 +198,7 @@ namespace GiddhDesktop.Views
             emailBox.Document.GetText(Windows.UI.Text.TextGetOptions.UseObjectText, out emails);
             if (string.IsNullOrEmpty(emails))
             {
-                showToastNotification("Enter atleast one wmail address");                
+                showToastNotification("Enter atleast one email address");                
                 emailBox.Focus(FocusState.Keyboard);
                 return;
             }
@@ -298,6 +305,8 @@ namespace GiddhDesktop.Views
             lt.type = typeCombo.SelectionBoxItem.ToString();
             ledgerTransactionss.Add(lt);
             typeCombo.SelectedIndex = 0;
+            debitParticular.Text = "";
+            debitAmount.Text = "";
             debitParticular.Focus(FocusState.Pointer);
         }
 
@@ -309,6 +318,8 @@ namespace GiddhDesktop.Views
             lt.type = typeCombo.SelectionBoxItem.ToString();
             ledgerTransactionss.Add(lt);
             typeCombo.SelectedIndex = 1;
+            debitParticular.Text = "";
+            debitAmount.Text = "";
             debitParticular.Focus(FocusState.Pointer);
         }
 
@@ -369,6 +380,11 @@ namespace GiddhDesktop.Views
 
         private void updateEntry_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            if (!Constants.permissionAllowed)
+            {
+                showToastNotification("You don't have sufficient permission to edit entry.");
+                return;
+            }
             transaction t = (transaction)(sender as StackPanel).DataContext;
             if (t.invoiceGenerated)
             {
@@ -397,9 +413,10 @@ namespace GiddhDesktop.Views
             //}
             //else
             //    typeCombo.SelectedIndex = 0;
-            descriptionBox.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, t.ledgerDiscription);
-            tagTextBox.Text = t.ledgerTag;
+            descriptionBox.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, string.IsNullOrEmpty(t.ledgerDiscription) ? string.Empty : t.ledgerDiscription);
+            tagTextBox.Text = string.IsNullOrEmpty(t.ledgerTag) ? string.Empty : t.ledgerTag;
             voucherTypeCombo.SelectedIndex = setVoucherType(t.ledgerVoucher.shortCode);
+            showToastNotification("Please click on edit for that entry.");
         }
 
         public int setVoucherType(string voucher)

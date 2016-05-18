@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.HockeyApp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -43,10 +44,17 @@ namespace GiddhDesktop
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            Microsoft.HockeyApp.HockeyClient.Current.Configure("815bd9fd1f4c45d5aebd875634f98413");
+            Microsoft.HockeyApp.HockeyClient.Current.Configure("815bd9fd1f4c45d5aebd875634f98413",new TelemetryConfiguration() {
+                DescriptionLoader = (Exception ex) =>
+                {
+                    return "Exception HResult: " + ex.HResult.ToString();
+                }
+            });
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.Construct();
         }
+        
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -61,7 +69,7 @@ namespace GiddhDesktop
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            Frame rootFrame = Window.Current.Content as Frame;
+            Frame rootFrame = Window.Current.Content as Frame;            
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -121,5 +129,7 @@ namespace GiddhDesktop
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        partial void Construct();
     }
 }

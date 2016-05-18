@@ -471,7 +471,7 @@ namespace GiddhDesktop.Common.Services
             try
             {
                 string url = "company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/ledgers";
-                if (!string.IsNullOrEmpty(url))
+                if (!string.IsNullOrEmpty(ledgerUniqueName))
                 {
                     url += "/" + ledgerUniqueName;
                     response = await postSubmitter.SendRequestPUTResponse(url, values, header);

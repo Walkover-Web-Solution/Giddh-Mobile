@@ -85,6 +85,22 @@ namespace GiddhDesktop
             //waiting.Visibility = Visibility.Visible;
             MainFrame.Navigate(typeof(BlankPage));
             Constants.selectedCompany = (company)this.companyComboBox.SelectedItem;
+            company str = Constants.selectedCompany;
+            if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
+            {
+                Constants.permissionAllowed = false;
+            }
+            if (string.IsNullOrEmpty(str.sharedEntity))
+            {
+                Constants.permissionAllowed = true;
+            }
+            else
+            {
+                if (str.role.uniqueName.ToLower().Equals("view_only"))
+                    Constants.permissionAllowed = false;
+                else
+                    Constants.permissionAllowed = true;
+            }
             getAccounts();            
         }
 

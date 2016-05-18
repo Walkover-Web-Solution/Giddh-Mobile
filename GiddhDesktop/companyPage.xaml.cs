@@ -82,8 +82,10 @@ namespace GiddhDesktop
 
         private void companyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //waiting.Visibility = Visibility.Visible;
+            MainFrame.Navigate(typeof(BlankPage));
             Constants.selectedCompany = (company)this.companyComboBox.SelectedItem;
-            getAccounts();
+            getAccounts();            
         }
 
         private void searchAccount_Event(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -108,17 +110,17 @@ namespace GiddhDesktop
         }
 
         public void showProgressRing(bool show)
-        {            
-            //if (show)
-            //{
-            //    this.accountProgressRing.Visisbility = Visibility.Visible;
-            //    this.accountListView.Visibility = Visibility.Collapsed;
-            //}
-            //else
-            //{
-            //    this.accountProgressRing.Visisbility = Visibility.Collapsed;
-            //    this.accountListView.Visibility = Visibility.Visible;
-            //}
+        {
+            if (show)
+            {
+                this.waiting.Visibility = Visibility.Visible;
+                //this.accountListView.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                this.waiting.Visibility = Visibility.Collapsed;
+                //this.accountListView.Visibility = Visibility.Visible;
+            }
         }
 
         private async void getLedger_Event(object sender, ItemClickEventArgs e)

@@ -16,7 +16,12 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>GiddhDesktop_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>GiddhDesktop_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>3A66FB45834199DD3725E87957ECCD7B1BFFC1CF</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <HockeyAppResourceId>815bd9fd1f4c45d5aebd875634f98413</HockeyAppResourceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -92,11 +97,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="GiddhDesktop_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BlankPage.xaml.cs">
+      <DependentUpon>BlankPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Modal\accounts.cs" />
@@ -133,7 +142,14 @@
     <None Include="GiddhDesktop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\giddh24.png" />
+    <Content Include="Assets\giddh300.png" />
+    <Content Include="Assets\giddh50.png" />
+    <Content Include="Assets\giddh620x300.png" />
+    <Content Include="Assets\giddh88.png" />
+    <Content Include="Assets\Giddhsvg.png" />
     <Content Include="Assets\login_bg.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -148,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BlankPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="companyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

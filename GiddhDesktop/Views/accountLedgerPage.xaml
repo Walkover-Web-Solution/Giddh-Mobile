@@ -11,6 +11,8 @@
         <converterss:convertStringToDate x:Key="stringToDate"/>
         <converterss:showNameWithUniqueName x:Key="getFullName"/>
         <converterss:sharedEntityToBool x:Key="sharedEntityToBool"/>
+        <converterss:boolToVisibility x:Key="boolToVisibility"/>
+        <converterss:dateToString x:Key="dateToString"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="mainGrid" DataContext="{Binding}">
@@ -53,7 +55,7 @@
             <!--#endregion-->
 
             <!--#region Create entry from here-->
-            <Grid Grid.Row="1" Grid.ColumnSpan="2" Padding="10" BorderThickness="2" BorderBrush="LightGray" Background="LightGray" Visibility="{x:Bind companySelected,Converter={StaticResource sharedEntityToBool}}">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Padding="10" BorderThickness="2" BorderBrush="LightGray" Background="LightGray" Visibility="{x:Bind companySelected,Converter={StaticResource sharedEntityToBool}}" Margin="0,0,0,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -64,27 +66,35 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="typeCombo" SelectedIndex="0" Grid.Row="0" TabIndex="0" TabNavigation="Local">
-                    <ComboBox.Items>
-                        <ComboBoxItem>Debit</ComboBoxItem>
-                        <ComboBoxItem>Credit</ComboBoxItem>
-                    </ComboBox.Items>
-                </ComboBox>
-                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <!--#region entry details-->
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <CalendarDatePicker x:Name="debitDate" BorderThickness="0"
+                    <ComboBox x:Name="typeCombo" SelectedIndex="0" Grid.Row="0">
+                        <ComboBox.Items>
+                            <ComboBoxItem>Debit</ComboBoxItem>
+                            <ComboBoxItem>Credit</ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
+                    <!--<Button Name="dateButton" Grid.Row="1" Grid.Column="0" Content="Select date" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Button.Flyout>
+                            <DatePickerFlyout DatePicked="pickerDate_Picked">
+                                
+                            </DatePickerFlyout>
+                        </Button.Flyout>
+                    </Button>-->
+                    <CalendarDatePicker Name="debitDate" BorderThickness="0"
                                         DateFormat="{}{day.integer}/{month.integer}/{year.full}"
-                                        IsHitTestVisible="True" Background="{x:Null}"
-                                        Grid.Column="0" TabIndex="1"/>
-                    <AutoSuggestBox x:Name="debitParticular" VerticalAlignment="Center" PlaceholderText="Particular"
-                                    BorderThickness="0" TextChanged="AutoSuggestBox_TextChanged"
-                                     Grid.Column="1" 
-                                    SuggestionChosen="AutoSuggestBox_SuggestionChosen" TextMemberPath="name" TabIndex="2"
-                                    LostFocus="debitParticular_LostFocus" IsTabStop="True">
+                                        Background="{x:Null}"
+                                        Grid.Column="0" Grid.Row="1" DateChanged="debitDate_DateChanged"/>
+                    <AutoSuggestBox x:Name="debitParticular" Grid.Row="1" VerticalAlignment="Center" PlaceholderText="Particular" BorderThickness="0" TextChanged="AutoSuggestBox_TextChanged" Grid.Column="1" SuggestionChosen="AutoSuggestBox_SuggestionChosen" TextMemberPath="name">
                         <AutoSuggestBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Converter={StaticResource getFullName}}" Foreground="Black"/>
@@ -95,9 +105,11 @@
                               Grid.Column="2" PlaceholderText="Amount"
                              Width="150" TextAlignment="Right" BorderThickness="0"
                              InputScope="CurrencyAmount" Background="{x:Null}"
-                             TabIndex="3" LostFocus="debitAmount_LostFocus" IsSpellCheckEnabled="False"/>
+							 Grid.Row="1" KeyUp="debitAmount_KeyUp" TextChanging="debitAmount_TextChanging"/>
                 </Grid>
-                <StackPanel Grid.Row="2" Margin="0,10" Grid.ColumnSpan="2">
+                <!--#endregion-->
+                <!--#region extra detail of entry-->
+                <StackPanel Grid.Row="1" Margin="0,10" Grid.ColumnSpan="2">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -107,7 +119,7 @@
                         <ComboBox x:Name="voucherTypeCombo" Grid.Column="0"
                                   PlaceholderText="Select voucher type" Background="{x:Null}"
                                   BorderBrush="#66000000" BorderThickness="0,0,0,2" Width="195"
-                                  SelectedIndex="0" TabIndex="4" TabNavigation="Local">
+                                  SelectedIndex="0" VerticalAlignment="Bottom">
                             <ComboBox.Items>
                                 <ComboBoxItem>Sales</ComboBoxItem>
                                 <ComboBoxItem>Purchases</ComboBoxItem>
@@ -119,57 +131,47 @@
                                 <ComboBoxItem>Credit Note</ComboBoxItem>
                             </ComboBox.Items>
                         </ComboBox>
-                        <RichEditBox x:Name="descriptionBox" PlaceholderText="Description" Background="{x:Null}" BorderThickness="0,0,0,2" Margin="205,0,9.667,0" Grid.ColumnSpan="2" TabIndex="5"/>
-                        <TextBox x:Name="tagTextBox" Grid.Column="2" PlaceholderText="Tag" Background="{x:Null}" BorderThickness="0,0,0,2" TabIndex="6"/>
+                        <RichEditBox x:Name="descriptionBox" PlaceholderText="Description" Background="{x:Null}" BorderThickness="0,0,0,2" Margin="205,0,9.667,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tagTextBox" Grid.Column="2" PlaceholderText="Tag" Background="{x:Null}" BorderThickness="0,0,0,2"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <AppBarButton Icon="Add"  Click="createEntryButton_Click" TabIndex="7"/>
-                    <AppBarButton Icon="Cancel" Click="clearButton_Click"
-                                  TabIndex="8" AutomationProperties.AcceleratorKey="Control R"/>
+                <!--#endregion-->
+                <!--#region entry buttons-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <Button Content="Add in DR" Margin="5,0" Click="addInDr_Click"/>
+                    <Button Content="Add in CR" Margin="5,0" Click="addInCr_Click"/>
+                    <AppBarButton Icon="Add" Click="createEntryButton_Click" Margin="5,0"/>
+                    <AppBarButton Icon="Cancel" Click="clearButton_Click" Margin="5,0"/>
                 </StackPanel>
+                <!--#endregion-->
+                <!--#region multi entry shows here-->
+                <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" ItemsSource="{x:Bind ledgerTransactionss}" ItemClick="multipleEntryItem_Click">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid DataContext="{Binding}" HorizontalAlignment="Stretch">                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<TextBlock Text="{Binding Date, ElementName=debitDate,Converter={StaticResource dateToString}}" Margin="0,0,5,0" Grid.Column="0"/>-->
+                                <TextBlock VerticalAlignment="Center" Text="{Binding particular}" Margin="0,0,5,0" Grid.Column="0" Width="300"/>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding amount}" TextAlignment="Right" Margin="0,0,5,0" Grid.Column="1" Width="150"/>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding type}" TextAlignment="Right"  Margin="0,0,5,0" Grid.Column="2" Width="80"/>
+                                <AppBarButton Icon="Edit" Click="editTransaction_Click" DataContext="{Binding}" Grid.Column="3"/>
+                                <AppBarButton Icon="Delete" Click="deleteTransaction_Click" DataContext="{Binding}" Grid.Column="4"/>
+                                <!--<AppBarButton Icon="Download" ToolTipService.ToolTip="Download Invoice" Visibility="{Binding invoiceGenerated,Converter={StaticResource boolToVisibility}}"/>-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--#endregion-->
             </Grid>
-            <!--<Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10" Padding="10" BorderThickness="2" BorderBrush="LightGray" Background="LightGray" Visibility="{x:Bind companySelected,Converter={StaticResource sharedEntityToBool}}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                --><!--<TextBlock Text="Make Entry" Grid.Row="0" Foreground="Gray" FontSize="11" Margin="0,5"/>--><!--
-                
-                <Grid Grid.Row="1" Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <CalendarDatePicker x:Name="creditDate" BorderThickness="0"
-                                        Grid.Column="0"
-                                        DateFormat="{}{day.integer}/{month.integer}/{year.full}" 
-                                        IsHitTestVisible="True" Background="{x:Null}"
-                                        TabIndex="3"/>
-                    <AutoSuggestBox x:Name="creditParticular" VerticalAlignment="Center"
-                                    Grid.Column="1" PlaceholderText="Particular" BorderThickness="0" TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" TextMemberPath="name" TabIndex="4" LostFocus="creditParticular_LostFocus">
-                        <AutoSuggestBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Converter={StaticResource getFullName}}"/>
-                            </DataTemplate>
-                        </AutoSuggestBox.ItemTemplate>
-                    </AutoSuggestBox>
-                    <TextBox x:Name="creditAmount" VerticalAlignment="Center" Grid.Column="2" PlaceholderText="Amount" Width="150" TextAlignment="Right" BorderThickness="0" InputScope="CurrencyAmount" Background="{x:Null}" TabIndex="5"/>
-                </Grid>
-                
-            </Grid>-->
-
             <!--#endregion-->
 
-            <!--#region gridview header-->
+            <!--#region ledger list header-->
             <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
                 <Border Background="#FF4D3F3F" Padding="10">
                     <TextBlock Text="Debit (Dr)" Foreground="White" FontWeight="Bold"/>
@@ -203,41 +205,43 @@
             <!--#endregion-->
 
             <!--#region debit transactions-->
-            <GridView ItemsSource="{Binding debitTransactions}" Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" Padding="5" SelectionMode="Single" BorderBrush="#FFBDBDBD">
-                <GridView.ItemsPanel>
+            <ListView ItemsSource="{Binding debitTransactions}" Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,0" Padding="5" SelectionMode="Single" BorderBrush="#FFBDBDBD">
+                <!--<GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"  MaximumRowsOrColumns="1"></ItemsWrapGrid>
                     </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridView.ItemTemplate>
+                </GridView.ItemsPanel>-->
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" DataContext="{Binding}">
-                            <TextBlock Text="{Binding entryDate}"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right"/>
+                        <StackPanel Orientation="Horizontal" DataContext="{Binding}" Tapped="updateEntry_Tapped">
+                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300" Margin="0,0,5,0"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right" Margin="0,0,5,0"/>
+                            <!--<AppBarButton Icon="Download" ToolTipService.ToolTip="Download Invoice" Visibility="{Binding invoiceGenerated,Converter={StaticResource boolToVisibility}}"/>-->
                         </StackPanel>
                     </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+                </ListView.ItemTemplate>
+            </ListView>
             <!--#endregion-->
 
             <!--#region credit transactions-->
-            <GridView ItemsSource="{Binding creditTransactions}" Grid.Row="3" Grid.Column="1" Padding="5">
-                <GridView.ItemsPanel>
+            <ListView ItemsSource="{Binding creditTransactions}" Grid.Row="3" Grid.Column="1" Padding="5">
+                <!--<GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"  MaximumRowsOrColumns="1"></ItemsWrapGrid>
                     </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridView.ItemTemplate>
+                </GridView.ItemsPanel>-->
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" DataContext="{Binding}">
-                            <TextBlock Text="{Binding entryDate}"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right"/>
+                        <StackPanel Orientation="Horizontal" DataContext="{Binding}" Tapped="updateEntry_Tapped">
+                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300" Margin="0,0,5,0"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right" Margin="0,0,5,0"/>
+                            <!--<AppBarButton Icon="Download" ToolTipService.ToolTip="Download Invoice" Visibility="{Binding invoiceGenerated,Converter={StaticResource boolToVisibility}}"/>-->
                         </StackPanel>
                     </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+                </ListView.ItemTemplate>
+            </ListView>
             <!--#endregion-->
 
         </Grid>

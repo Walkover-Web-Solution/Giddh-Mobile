@@ -82,6 +82,9 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    <Grid x:Name="waiting" Grid.Row="1" Grid.RowSpan="2" Visibility="Visible" Canvas.ZIndex="10" Background="#66FFFFFF">
+                        <ProgressRing IsActive="True" Height="50" Width="50" VerticalAlignment="Center"/>
+                    </Grid>
                     <AutoSuggestBox Grid.Row="1" PlaceholderText="Search" HorizontalAlignment="Stretch" QuerySubmitted="searchAccount_Event" QueryIcon="Find" Background="#FFD1D1D1" Foreground="White"/>
                     <ListView Grid.Row="2" ItemsSource="{Binding}" Header="{Binding name}" Background="{x:Null}">
                         <ListView.ItemTemplate>

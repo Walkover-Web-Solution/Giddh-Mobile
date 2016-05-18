@@ -43,6 +43,7 @@ namespace GiddhDesktop
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
+            Microsoft.HockeyApp.HockeyClient.Current.Configure("815bd9fd1f4c45d5aebd875634f98413");
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

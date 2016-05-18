@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace GiddhDesktop.Common
 {
@@ -27,5 +28,29 @@ namespace GiddhDesktop.Common
 
         public static ObservableCollection<accountDetail> accountList { get; set; }
         public static ObservableCollection<accountWithParent> groupAccountList { get; set; }
+
+        public static Windows.Data.Xml.Dom.XmlDocument CreateToast(string message)
+        {
+            var xDoc = new XDocument(
+               new XElement("toast",
+               new XElement("visual",
+               new XElement("binding", new XAttribute("template", "ToastGeneric"),
+               new XElement("text", "Giddh"),
+               new XElement("text", message)
+            )
+            )// actions  
+            //new XElement("actions",
+            //new XElement("action", new XAttribute("activationType", "background"),
+            //new XAttribute("content", "Yes"), new XAttribute("arguments", "yes")),
+            //new XElement("action", new XAttribute("activationType", "background"),
+            //new XAttribute("content", "No"), new XAttribute("arguments", "no"))
+            //)
+            )
+            );
+
+            var xmlDoc = new Windows.Data.Xml.Dom.XmlDocument();
+            xmlDoc.LoadXml(xDoc.ToString());
+            return xmlDoc;
+        }
     }
 }

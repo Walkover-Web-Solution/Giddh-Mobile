@@ -221,6 +221,7 @@ namespace GiddhDesktop.Common.Services
                         transaction.ledgerTag = ledger.tag;
                         transaction.ledgerVoucher = ledger.voucher;
                         transaction.ledgerVoucherNo = ledger.voucherNo;
+                        transaction.invoiceGenerated = ledger.invoiceGenerated;
                         if (transaction.type.ToLower().Equals("credit"))
                         {
                             ledger.creditTransactions.Add(transaction);
@@ -458,7 +459,7 @@ namespace GiddhDesktop.Common.Services
         #endregion
 
         #region entries
-        public static async Task<Response> createNewEntry(ledgerToSend ledger)
+        public static async Task<Response> createNewEntry(ledgerToSend ledger,string ledgerUniqueName)
         {
             string str = JsonConvert.SerializeObject(ledger);
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>
@@ -469,7 +470,17 @@ namespace GiddhDesktop.Common.Services
             Response response = new Response();
             try
             {
-                response = await postSubmitter.SendRequestPOSTResponse("company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/ledgers", values, header);
+                string url = "company/" + Constants.selectedCompany.uniqueName + "/accounts/" + Constants.selectedAccount.uniqueName + "/ledgers";
+                if (!string.IsNullOrEmpty(url))
+                {
+                    url += "/" + ledgerUniqueName;
+                    response = await postSubmitter.SendRequestPUTResponse(url, values, header);
+                }
+                else
+                {
+                    response = await postSubmitter.SendRequestPOSTResponse(url, values, header);
+                }
+                
             }
             catch (Exception ex)
             {

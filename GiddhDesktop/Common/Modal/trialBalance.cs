@@ -152,6 +152,7 @@ namespace GiddhDesktop.Common.Modal
         public Voucher voucher { get; set; }
         public string tag { get; set; }
         public string description { get; set; }
+        public bool invoiceGenerated { get; set; }
         public ObservableCollection<transaction> debitTransactions { get; set; }
         public ObservableCollection<transaction> creditTransactions { get; set; }
     }
@@ -167,6 +168,7 @@ namespace GiddhDesktop.Common.Modal
         public Voucher ledgerVoucher { get; set; }
         public string ledgerTag { get; set; }
         public string ledgerDiscription { get; set; }
+        public bool invoiceGenerated { get; set; }
     }
 
     public class Voucher

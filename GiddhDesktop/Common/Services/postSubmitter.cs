@@ -131,6 +131,43 @@ namespace GiddhDesktop.Common.Services
             return RJson;
         }
 
+        public static async Task<Response> SendRequestPUTResponse(string url, List<KeyValuePair<string, string>> values, KeyValuePair<string, string> header)
+        {
+            Response RJson = new Response();
+            var httpClient = new HttpClient(new HttpClientHandler());
+            var content = new FormUrlEncodedContent(values);
+            var cont = new StringContent(values[0].Value, System.Text.Encoding.UTF8, "application/json");
+            //content.Headers.Add(header.Key, header.Value);
+            httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await httpClient.PutAsync(domainName + url, cont);
+            //HttpResponseMessage response = await httpClient.PostAsync(domainName + url, content);
+            Debug.WriteLine(domainName + url);
+            //response.EnsureSuccessStatusCode();
+            var responseString = await response.Content.ReadAsStringAsync();
+            //Debug.WriteLine(url + "--" + responseString);
+            if (responseString.Contains("success"))
+            {
+                try
+                {
+                    RJson = JsonConvert.DeserializeObject<Response>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                }
+                catch (Exception ex)
+                {
+                    ResponseString rstring = JsonConvert.DeserializeObject<ResponseString>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                    RJson.status = rstring.status;
+                    RJson.message = rstring.body;
+                }
+            }
+            else
+            {
+                RJson = JsonConvert.DeserializeObject<Response>(responseString.ToString(), new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            }
+
+
+            return RJson;
+        }
+
 
         public static async Task<ResponseA> SendRequestGETResponseA(string url, List<KeyValuePair<string, string>> values, KeyValuePair<string, string> header)
         {

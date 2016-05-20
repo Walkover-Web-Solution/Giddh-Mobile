@@ -141,6 +141,7 @@ namespace GiddhDesktop.Views
             if (wantToFocus)
                 debitDate.Focus(FocusState.Keyboard);
             ledgerTransactionss.Clear();
+            setSaveButtonContent();
         }
 
         private async void createEntryButton_Click(object sender, RoutedEventArgs e)
@@ -150,11 +151,17 @@ namespace GiddhDesktop.Views
                 showToastNotification("You don't have sufficient permission to add new entry.");
                 return;
             }
+            if (debitDate.Date == null)
+            {
+                showToastNotification("Select date first.");
+                debitDate.Focus(FocusState.Pointer);
+                return;
+            }
             ledgerToSend lts = new ledgerToSend();
 
             if (ledgerTransactionss.Count <= 0)
             {
-                if (string.IsNullOrEmpty(debitParticular.Text))
+                if (string.IsNullOrEmpty(debitParticular.Text) || string.IsNullOrEmpty(debitAmount.Text))
                 {
                     return;
                 }
@@ -166,7 +173,7 @@ namespace GiddhDesktop.Views
             }
             else
             {
-                if (string.IsNullOrEmpty(debitParticular.Text))
+                if (!string.IsNullOrEmpty(debitParticular.Text))
                 {
                     ledgerTransaction lt = new ledgerTransaction();
                     lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
@@ -178,7 +185,7 @@ namespace GiddhDesktop.Views
             }
             lts.entryDate = debitDate.Date.Value.ToString("dd-MM-yyyy");
             string description = "";
-            descriptionBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out description);
+            descriptionBox.Document.GetText(Windows.UI.Text.TextGetOptions.NoHidden, out description);
             lts.description = description;
             lts.voucherType = (voucherList.Where(x => x.Key.Equals(voucherTypeCombo.SelectionBoxItem.ToString())).ToList())[0].Value.ToString();
             lts.tag = tagTextBox.Text;
@@ -205,7 +212,7 @@ namespace GiddhDesktop.Views
             var emailArray = emails.Split(',');
             foreach (string str in emailArray)
             {
-                if (!isValidEmail(str))
+                if (!isValidEmail(str.Trim()))
                 {
                     showToastNotification(str + " is not valid email address");                    
                     emailBox.Focus(FocusState.Keyboard);
@@ -223,9 +230,13 @@ namespace GiddhDesktop.Views
         #region download file
         private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
+            (sender as AppBarButton).IsEnabled = false;
+            Statustext.Text = "Initializing...";
             Response response = await server.exportLedger(fromDatePicker.Date.Value.ToString("dd-MM-yyyy"), toDatePicker.Date.Value.ToString("dd-MM-yyyy"));
+            Statustext.Text = "Please wait...";
             string filePath = response.body["filePath"].ToString();
             Download(filePath,"ledger.xls");
+            (sender as AppBarButton).IsEnabled = true;
         }
 
         
@@ -238,7 +249,7 @@ namespace GiddhDesktop.Views
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
             if (folder != null)
             {
-                StorageFile file = await folder.CreateFileAsync(acDetail.name+fileName, CreationCollisionOption.GenerateUniqueName);
+                StorageFile file = await folder.CreateFileAsync(acDetail.name + fileName, CreationCollisionOption.GenerateUniqueName);
                 Uri durl = new Uri(urlToDownload);
                 downloadOperation = backgroundDownloader.CreateDownload(durl, file);
                 Progress<DownloadOperation> progress = new Progress<DownloadOperation>(progressChanged);
@@ -256,6 +267,8 @@ namespace GiddhDesktop.Views
                     downloadOperation = null;
                 }
             }
+            else
+                Statustext.Text = "";
         }
         private void progressChanged(DownloadOperation downloadOperation)
         {
@@ -297,6 +310,16 @@ namespace GiddhDesktop.Views
         }
         #endregion
 
+        public void setSaveButtonContent()
+        {
+            if (ledgerTransactionss.Count > 0)
+            {
+                createEntryButton.Content = "Save all entries";
+            }
+            else
+                createEntryButton.Content = "Save";
+        }
+
         private void addInDr_Click(object sender, RoutedEventArgs e)
         {
             ledgerTransaction lt = new ledgerTransaction();
@@ -304,6 +327,7 @@ namespace GiddhDesktop.Views
             lt.amount = debitAmount.Text;
             lt.type = typeCombo.SelectionBoxItem.ToString();
             ledgerTransactionss.Add(lt);
+            setSaveButtonContent();
             typeCombo.SelectedIndex = 0;
             debitParticular.Text = "";
             debitAmount.Text = "";
@@ -317,6 +341,7 @@ namespace GiddhDesktop.Views
             lt.amount = debitAmount.Text;
             lt.type = typeCombo.SelectionBoxItem.ToString();
             ledgerTransactionss.Add(lt);
+            setSaveButtonContent();
             typeCombo.SelectedIndex = 1;
             debitParticular.Text = "";
             debitAmount.Text = "";
@@ -376,6 +401,7 @@ namespace GiddhDesktop.Views
             }
             else
                 typeCombo.SelectedIndex = 0;
+            setSaveButtonContent();
         }
 
         private void updateEntry_Tapped(object sender, TappedRoutedEventArgs e)
@@ -417,6 +443,7 @@ namespace GiddhDesktop.Views
             tagTextBox.Text = string.IsNullOrEmpty(t.ledgerTag) ? string.Empty : t.ledgerTag;
             voucherTypeCombo.SelectedIndex = setVoucherType(t.ledgerVoucher.shortCode);
             showToastNotification("Please click on edit for that entry.");
+            setSaveButtonContent();
         }
 
         public int setVoucherType(string voucher)

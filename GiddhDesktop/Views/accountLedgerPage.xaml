@@ -13,6 +13,7 @@
         <converterss:sharedEntityToBool x:Key="sharedEntityToBool"/>
         <converterss:boolToVisibility x:Key="boolToVisibility"/>
         <converterss:dateToString x:Key="dateToString"/>
+        <converterss:intToContent x:Key="intToContent"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="mainGrid" DataContext="{Binding}">
@@ -28,29 +29,32 @@
             </Grid.ColumnDefinitions>
 
             <!--#region date section to get ledger-->
-            <StackPanel Orientation="Horizontal" Grid.Row="0" BorderThickness="0" BorderBrush="Transparent" Margin="0,0,0,10">
-                <CalendarDatePicker x:Name="fromDatePicker" DateFormat="{}{day.integer}/{month.integer}/{year.full}" BorderThickness="0,0,0,1" TabNavigation="Once"/>
-                <TextBlock Text="to" VerticalAlignment="Center" Margin="5,0"/>
-                <CalendarDatePicker x:Name="toDatePicker" DateFormat="{}{day.integer}/{month.integer}/{year.full}" BorderThickness="0,0,0,1"/>
-                <Button Margin="5,0,0,0" Click="goButton_Click" Background="{x:Null}">
-                    <SymbolIcon Foreground="#FF8B8B8B" Symbol="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
+            <StackPanel Orientation="Vertical" Grid.Row="0" BorderThickness="0" BorderBrush="Transparent" Margin="0,0,0,10">
+                <TextBlock Text="{Binding acDetail.name}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" BorderThickness="0" BorderBrush="Transparent" Margin="0,0,0,10">
+                    <CalendarDatePicker x:Name="fromDatePicker" DateFormat="{}{day.integer}/{month.integer}/{year.full}" BorderThickness="0,0,0,1" TabNavigation="Once"/>
+                    <TextBlock Text="to" VerticalAlignment="Center" Margin="5,0"/>
+                    <CalendarDatePicker x:Name="toDatePicker" DateFormat="{}{day.integer}/{month.integer}/{year.full}" BorderThickness="0,0,0,1"/>
+                    <Button Margin="5,0,0,0" Click="goButton_Click" Background="{x:Null}">
+                        <SymbolIcon Foreground="#FF8B8B8B" Symbol="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-                <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="Mail" Tag="Send ledger" ToolTipService.ToolTip="Send ledger" Label="Mail">
-                    <AppBarButton.Flyout>
-                        <Flyout>
-                            <StackPanel Orientation="Horizontal">
-                                <RichEditBox x:Name="emailBox" PlaceholderText="Enter email address seperated by comma."/>
-                                <AppBarButton Icon="Send" Click="sendEmailButton_Click"/>
-                            </StackPanel>
-                        </Flyout>
-                    </AppBarButton.Flyout>
-                </AppBarButton>
-                <AppBarButton Icon="Download" Tag="Download ledger" ToolTipService.ToolTip="Download Ledger" Label="Download" Click="downloadButton_Click"/>
-            </StackPanel>            
-            <TextBlock x:Name="Statustext" Height="30" Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBlock x:Name="Statustext" Height="30" Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <AppBarButton Icon="Mail" Tag="Send ledger" ToolTipService.ToolTip="Send ledger" Label="Mail" VerticalAlignment="Bottom">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Orientation="Horizontal">
+                                    <RichEditBox x:Name="emailBox" PlaceholderText="Enter email address seperated by comma."/>
+                                    <AppBarButton Icon="Send" Click="sendEmailButton_Click"/>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarButton VerticalAlignment="Bottom" Icon="Download" Tag="Download ledger" ToolTipService.ToolTip="Download Ledger" Label="Download" Click="downloadButton_Click"/>
+                </StackPanel>                
             </StackPanel>
             <!--#endregion-->
 
@@ -73,11 +77,11 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="typeCombo" SelectedIndex="0" Grid.Row="0">
+                    <ComboBox x:Name="typeCombo" SelectedIndex="0" Grid.Row="0" BorderThickness="0,0,0,1" Background="{x:Null}">
                         <ComboBox.Items>
                             <ComboBoxItem>Debit</ComboBoxItem>
                             <ComboBoxItem>Credit</ComboBoxItem>
@@ -90,11 +94,13 @@
                             </DatePickerFlyout>
                         </Button.Flyout>
                     </Button>-->
-                    <CalendarDatePicker Name="debitDate" BorderThickness="0"
+                    <CalendarDatePicker Name="debitDate" BorderThickness="0,0,0,1"
                                         DateFormat="{}{day.integer}/{month.integer}/{year.full}"
-                                        Background="{x:Null}"
-                                        Grid.Column="0" Grid.Row="1" DateChanged="debitDate_DateChanged"/>
-                    <AutoSuggestBox x:Name="debitParticular" Grid.Row="1" VerticalAlignment="Center" PlaceholderText="Particular" BorderThickness="0" TextChanged="AutoSuggestBox_TextChanged" Grid.Column="1" SuggestionChosen="AutoSuggestBox_SuggestionChosen" TextMemberPath="name">
+                                        Background="{x:Null}" Margin="10,0,0,0"
+                                        Grid.Column="1" Grid.Row="0" DateChanged="debitDate_DateChanged" HorizontalAlignment="Left"/>
+                    <AutoSuggestBox x:Name="debitParticular" Grid.Row="1"
+                                    VerticalAlignment="Center" PlaceholderText="Particular"
+                                    BorderThickness="0,0,0,1" Margin="0,10,0,0" TextChanged="AutoSuggestBox_TextChanged" Grid.Column="0" Grid.ColumnSpan="2" SuggestionChosen="AutoSuggestBox_SuggestionChosen" TextMemberPath="name">
                         <AutoSuggestBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Converter={StaticResource getFullName}}" Foreground="Black"/>
@@ -102,10 +108,10 @@
                         </AutoSuggestBox.ItemTemplate>
                     </AutoSuggestBox>
                     <TextBox x:Name="debitAmount" VerticalAlignment="Center"
-                              Grid.Column="2" PlaceholderText="Amount"
-                             Width="150" TextAlignment="Right" BorderThickness="0"
+                              Grid.Column="2" PlaceholderText="Amount" Margin="10,10,0,0"
+                             Width="150" TextAlignment="Right" BorderThickness="0,0,0,1"
                              InputScope="CurrencyAmount" Background="{x:Null}"
-							 Grid.Row="1" KeyUp="debitAmount_KeyUp" TextChanging="debitAmount_TextChanging"/>
+							 Grid.Row="1" KeyUp="debitAmount_KeyUp" TextChanging="debitAmount_TextChanging" HorizontalAlignment="Left"/>
                 </Grid>
                 <!--#endregion-->
                 <!--#region extra detail of entry-->
@@ -118,7 +124,7 @@
                         </Grid.ColumnDefinitions>
                         <ComboBox x:Name="voucherTypeCombo" Grid.Column="0"
                                   PlaceholderText="Select voucher type" Background="{x:Null}"
-                                  BorderBrush="#66000000" BorderThickness="0,0,0,2" Width="195"
+                                  BorderBrush="#66000000" BorderThickness="0,0,0,1" Width="195"
                                   SelectedIndex="0" VerticalAlignment="Bottom">
                             <ComboBox.Items>
                                 <ComboBoxItem>Sales</ComboBoxItem>
@@ -131,17 +137,18 @@
                                 <ComboBoxItem>Credit Note</ComboBoxItem>
                             </ComboBox.Items>
                         </ComboBox>
-                        <RichEditBox x:Name="descriptionBox" PlaceholderText="Description" Background="{x:Null}" BorderThickness="0,0,0,2" Margin="205,0,9.667,0" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="tagTextBox" Grid.Column="2" PlaceholderText="Tag" Background="{x:Null}" BorderThickness="0,0,0,2"/>
+                        <RichEditBox x:Name="descriptionBox" PlaceholderText="Description" Background="{x:Null}" BorderThickness="0,0,0,1" Margin="205,0,9.667,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tagTextBox" Grid.Column="2" PlaceholderText="Tag" Background="{x:Null}" BorderThickness="0,0,0,1"/>
                     </Grid>
                 </StackPanel>
                 <!--#endregion-->
                 <!--#region entry buttons-->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
-                    <Button Content="Add in DR" Margin="5,0" Click="addInDr_Click"/>
-                    <Button Content="Add in CR" Margin="5,0" Click="addInCr_Click"/>
-                    <AppBarButton Icon="Add" Click="createEntryButton_Click" Margin="5,0"/>
-                    <AppBarButton Icon="Cancel" Click="clearButton_Click" Margin="5,0"/>
+                    <Button x:Name="createEntryButton" 
+                            Content="{x:Bind Path=ledgerTransactionss.Count,Converter={StaticResource intToContent}}" Click="createEntryButton_Click" Margin="5,0"/>
+                    <Button Content="Add DR" Margin="5,0" Click="addInDr_Click"/>
+                    <Button Content="Add CR" Margin="5,0" Click="addInCr_Click"/>                    
+                    <Button Content="Clear" Click="clearButton_Click" Margin="5,0"/>
                 </StackPanel>
                 <!--#endregion-->
                 <!--#region multi entry shows here-->
@@ -173,6 +180,10 @@
 
             <!--#region ledger list header-->
             <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="{Binding acDetail.name}"/>
+                    <TextBlock Text=" is receiving" FontWeight="SemiBold"/>
+                </StackPanel>
                 <Border Background="#FF4D3F3F" Padding="10">
                     <TextBlock Text="Debit (Dr)" Foreground="White" FontWeight="Bold"/>
                 </Border>
@@ -188,6 +199,10 @@
                 </Grid>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding acDetail.name}"/>
+                    <TextBlock Text=" is giving" FontWeight="SemiBold"/>
+                </StackPanel>
                 <Border Background="#FF4D3F3F" Padding="10">
                     <TextBlock Text="Credit (Cr)" Foreground="White" FontWeight="Bold"/>
                 </Border>
@@ -214,7 +229,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" DataContext="{Binding}" Tapped="updateEntry_Tapped">
-                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0" Foreground="Gray"/>
                             <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300" Margin="0,0,5,0"/>
                             <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right" Margin="0,0,5,0"/>
                             <!--<AppBarButton Icon="Download" ToolTipService.ToolTip="Download Invoice" Visibility="{Binding invoiceGenerated,Converter={StaticResource boolToVisibility}}"/>-->
@@ -234,7 +249,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" DataContext="{Binding}" Tapped="updateEntry_Tapped">
-                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding entryDate}" Margin="0,0,5,0" Foreground="Gray"/>
                             <TextBlock VerticalAlignment="Center" Text="{Binding particular.name}" Width="300" Margin="0,0,5,0"/>
                             <TextBlock VerticalAlignment="Center" Text="{Binding amount}" Width="150" TextAlignment="Right" Margin="0,0,5,0"/>
                             <!--<AppBarButton Icon="Download" ToolTipService.ToolTip="Download Invoice" Visibility="{Binding invoiceGenerated,Converter={StaticResource boolToVisibility}}"/>-->

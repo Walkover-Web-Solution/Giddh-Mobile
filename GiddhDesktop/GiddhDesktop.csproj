@@ -19,7 +19,7 @@
     <PackageCertificateKeyFile>GiddhDesktop_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>3A66FB45834199DD3725E87957ECCD7B1BFFC1CF</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxBundle>Always</AppxBundle>
+    <AppxBundle>Auto</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <HockeyAppResourceId>815bd9fd1f4c45d5aebd875634f98413</HockeyAppResourceId>
   </PropertyGroup>

@@ -99,4 +99,19 @@ namespace GiddhDesktop.Common.Services
             throw new NotImplementedException();
         }
     }
+
+    public class intToContent : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value.ToString().Equals("0"))
+                return "Save";
+            else
+                return "Save all entries";
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

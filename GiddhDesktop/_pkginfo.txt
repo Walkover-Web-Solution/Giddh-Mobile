@@ -1,1 +1,1 @@
-C:\Users\Priyank\Documents\Visual Studio 2015\Projects\GiddhDesktopWin\GiddhDesktop\AppPackages\GiddhDesktop_1.2.0.0\GiddhDesktop_1.2.0.0_x86_x64_arm.appxbundle
+C:\Users\Priyank\Documents\Visual Studio 2015\Projects\GiddhDesktopWin\GiddhDesktop\AppPackages\GiddhDesktop_1.2.11.0\GiddhDesktop_1.2.11.0_x86_x64_arm.appxbundle

@@ -74,15 +74,31 @@ namespace GiddhDesktop.Views
             base.OnNavigatedTo(e);
             fromDatePicker.Date = new DateTimeOffset(DateTime.Now.AddMonths(-1));
             toDatePicker.Date = new DateTimeOffset(DateTime.Now);
+            debitDate.Date = new DateTimeOffset(DateTime.Now);
             var account = (accountDetail)e.Parameter;
             acDetail = account;
+            if (string.IsNullOrEmpty(acDetail.role.uniqueName) || acDetail.role.uniqueName.ToLower().Equals("view_only"))
+            {
+                Constants.permissionAllowed = false;
+            }
+            else
+            {
+                Constants.permissionAllowed = true;
+            }
             getLedger(account);            
         }
 
         public async void getLedger(accountDetail acDetail)
         {
-            al = await server.getAccountLedgers(acDetail,fromDatePicker.Date.Value.ToString("dd-MM-yyyy"),toDatePicker.Date.Value.ToString("dd-MM-yyyy"));
-            mainGrid.DataContext = al;
+            try
+            {
+                al = await server.getAccountLedgers(acDetail, fromDatePicker.Date.Value.ToString("dd-MM-yyyy"), toDatePicker.Date.Value.ToString("dd-MM-yyyy"));
+                mainGrid.DataContext = al;
+            }
+            catch (Exception ex)
+            {
+                showToastNotification(ex.Message);
+            }
         }
 
         private void goButton_Click(object sender, RoutedEventArgs e)
@@ -146,57 +162,64 @@ namespace GiddhDesktop.Views
 
         private async void createEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Constants.permissionAllowed)
+            try
             {
-                showToastNotification("You don't have sufficient permission to add new entry.");
-                return;
-            }
-            if (debitDate.Date == null)
-            {
-                showToastNotification("Select date first.");
-                debitDate.Focus(FocusState.Pointer);
-                return;
-            }
-            ledgerToSend lts = new ledgerToSend();
-
-            if (ledgerTransactionss.Count <= 0)
-            {
-                if (string.IsNullOrEmpty(debitParticular.Text) || string.IsNullOrEmpty(debitAmount.Text))
+                if (!Constants.permissionAllowed)
                 {
+                    showToastNotification("You don't have sufficient permission to add new entry.");
                     return;
                 }
-                ledgerTransaction lt = new ledgerTransaction();
-                lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
-                lt.amount = debitAmount.Text;
-                lt.type = typeCombo.SelectionBoxItem.ToString();
-                lts.transactions = new ledgerTransaction[] { lt };
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(debitParticular.Text))
+                if (debitDate.Date == null)
                 {
+                    showToastNotification("Select date first.");
+                    debitDate.Focus(FocusState.Pointer);
+                    return;
+                }
+                ledgerToSend lts = new ledgerToSend();
+
+                if (ledgerTransactionss.Count <= 0)
+                {
+                    if (string.IsNullOrEmpty(debitParticular.Text) || string.IsNullOrEmpty(debitAmount.Text))
+                    {
+                        return;
+                    }
                     ledgerTransaction lt = new ledgerTransaction();
                     lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
                     lt.amount = debitAmount.Text;
                     lt.type = typeCombo.SelectionBoxItem.ToString();
-                    ledgerTransactionss.Add(lt);
+                    lts.transactions = new ledgerTransaction[] { lt };
                 }
-                lts.transactions = ledgerTransactionss.ToArray();
+                else
+                {
+                    if (!string.IsNullOrEmpty(debitParticular.Text))
+                    {
+                        ledgerTransaction lt = new ledgerTransaction();
+                        lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
+                        lt.amount = debitAmount.Text;
+                        lt.type = typeCombo.SelectionBoxItem.ToString();
+                        ledgerTransactionss.Add(lt);
+                    }
+                    lts.transactions = ledgerTransactionss.ToArray();
+                }
+                lts.entryDate = debitDate.Date.Value.ToString("dd-MM-yyyy");
+                string description = "";
+                descriptionBox.Document.GetText(Windows.UI.Text.TextGetOptions.NoHidden, out description);
+                lts.description = description;
+                lts.voucherType = (voucherList.Where(x => x.Key.Equals(voucherTypeCombo.SelectionBoxItem.ToString())).ToList())[0].Value.ToString();
+                lts.tag = tagTextBox.Text;
+                Response response = await server.createNewEntry(lts, inCaseOfUpdate);
+                if (response.status.ToLower().Equals("success"))
+                {
+                    getLedger(acDetail);
+                    clearButton_Click(sender, e);
+                }
+                else
+                { showToastNotification(response.message); }
             }
-            lts.entryDate = debitDate.Date.Value.ToString("dd-MM-yyyy");
-            string description = "";
-            descriptionBox.Document.GetText(Windows.UI.Text.TextGetOptions.NoHidden, out description);
-            lts.description = description;
-            lts.voucherType = (voucherList.Where(x => x.Key.Equals(voucherTypeCombo.SelectionBoxItem.ToString())).ToList())[0].Value.ToString();
-            lts.tag = tagTextBox.Text;
-            Response response = await server.createNewEntry(lts,inCaseOfUpdate);
-            if (response.status.ToLower().Equals("success"))
+            catch (Exception ex)
             {
-                getLedger(acDetail);
-                clearButton_Click(sender, e);
+                showToastNotification(ex.Message);
             }
-            else
-            { showToastNotification(response.message); }
         }
 
         private async void sendEmailButton_Click(object sender, RoutedEventArgs e)
@@ -306,6 +329,7 @@ namespace GiddhDesktop.Views
             {
                 downloadOperation = null;
                 Statustext.Text = "";
+                showToastNotification("Download complete.");
             }
         }
         #endregion
@@ -322,30 +346,42 @@ namespace GiddhDesktop.Views
 
         private void addInDr_Click(object sender, RoutedEventArgs e)
         {
-            ledgerTransaction lt = new ledgerTransaction();
-            lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
-            lt.amount = debitAmount.Text;
-            lt.type = typeCombo.SelectionBoxItem.ToString();
-            ledgerTransactionss.Add(lt);
-            setSaveButtonContent();
-            typeCombo.SelectedIndex = 0;
-            debitParticular.Text = "";
-            debitAmount.Text = "";
-            debitParticular.Focus(FocusState.Pointer);
+            try
+            {
+                ledgerTransaction lt = new ledgerTransaction();
+                lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
+                lt.amount = debitAmount.Text;
+                lt.type = typeCombo.SelectionBoxItem.ToString();
+                ledgerTransactionss.Add(lt);
+                setSaveButtonContent();
+                typeCombo.SelectedIndex = 0;
+                debitParticular.Text = "";
+                debitAmount.Text = "";
+                debitParticular.Focus(FocusState.Pointer);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void addInCr_Click(object sender, RoutedEventArgs e)
         {
-            ledgerTransaction lt = new ledgerTransaction();
-            lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
-            lt.amount = debitAmount.Text;
-            lt.type = typeCombo.SelectionBoxItem.ToString();
-            ledgerTransactionss.Add(lt);
-            setSaveButtonContent();
-            typeCombo.SelectedIndex = 1;
-            debitParticular.Text = "";
-            debitAmount.Text = "";
-            debitParticular.Focus(FocusState.Pointer);
+            try
+            {
+                ledgerTransaction lt = new ledgerTransaction();
+                lt.particular = ((accountDetail)debitParticular.DataContext).uniqueName;
+                lt.amount = debitAmount.Text;
+                lt.type = typeCombo.SelectionBoxItem.ToString();
+                ledgerTransactionss.Add(lt);
+                setSaveButtonContent();
+                typeCombo.SelectedIndex = 1;
+                debitParticular.Text = "";
+                debitAmount.Text = "";
+                debitParticular.Focus(FocusState.Pointer);
+            }
+            catch (Exception ex)
+            { }
         }
 
         private void debitDate_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
@@ -365,7 +401,7 @@ namespace GiddhDesktop.Views
         public void showToastNotification(string message)
         {
             var toast = new ToastNotification(Constants.CreateToast(message));
-            var notification = ToastNotificationManager.CreateToastNotifier();
+            var notification = ToastNotificationManager.CreateToastNotifier();            
             notification.Show(toast);
         }
 
@@ -406,6 +442,7 @@ namespace GiddhDesktop.Views
 
         private void updateEntry_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            clearDetails(false);
             if (!Constants.permissionAllowed)
             {
                 showToastNotification("You don't have sufficient permission to edit entry.");
@@ -479,6 +516,16 @@ namespace GiddhDesktop.Views
             }
         }
 
+        public double calculateTotal()
+        {
+            double total = 0;
+            foreach (var transaction in ledgerTransactionss)
+            {
+                total += Convert.ToDouble(transaction.amount);
+            }
+            return total;
+        }
+
         private void debitAmount_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             //TextBox tb = sender as TextBox;
@@ -510,6 +557,11 @@ namespace GiddhDesktop.Views
                 return (true);
             else
                 return (false);
+        }
+
+        private void debitDate_Closed(object sender, object e)
+        {
+            debitParticular.Focus(FocusState.Keyboard);
         }
     }
 }

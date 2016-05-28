@@ -37,7 +37,7 @@ namespace GiddhDesktop
         {
             await server.companies();
             setCompanies();
-            server.getRoles();
+            //server.getRoles();
         }
 
         public void setCompanies()
@@ -85,7 +85,10 @@ namespace GiddhDesktop
             //waiting.Visibility = Visibility.Visible;
             MainFrame.Navigate(typeof(BlankPage));
             Constants.selectedCompany = (company)this.companyComboBox.SelectedItem;
+            searchCompanyAutoBox.Text = "";
             company str = Constants.selectedCompany;
+            if (str == null)
+                return;
             if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
             {
                 Constants.permissionAllowed = false;
@@ -141,7 +144,7 @@ namespace GiddhDesktop
 
         private async void getLedger_Event(object sender, ItemClickEventArgs e)
         {
-            accountLedger al = await server.getAccountLedgers((accountDetail)e.ClickedItem);
+            //accountLedger al = await server.getAccountLedgers((accountDetail)e.ClickedItem);
         }
 
         private void accountStackTapped_Event(object sender, TappedRoutedEventArgs e)
@@ -159,6 +162,13 @@ namespace GiddhDesktop
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             mainSplitView.IsPaneOpen = !mainSplitView.IsPaneOpen;
+        }
+
+        private void refreshCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+            showProgressRing(true);
+            getCompanies();
+            showProgressRing(false);
         }
     }
     

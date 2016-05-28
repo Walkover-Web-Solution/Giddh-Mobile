@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="walkover.Giddh10" Publisher="CN=09217CC4-740F-462C-8E52-CAE40E7FACB9" Version="1.2.0.0" />
+  <Identity Name="walkover.Giddh10" Publisher="CN=09217CC4-740F-462C-8E52-CAE40E7FACB9" Version="1.2.11.0" />
   <mp:PhoneIdentity PhoneProductId="1a056217-083b-4efc-8fc6-31555c43b3db" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Giddh10</DisplayName>

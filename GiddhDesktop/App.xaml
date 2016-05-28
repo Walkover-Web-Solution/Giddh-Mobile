@@ -5,7 +5,7 @@
     xmlns:local="using:GiddhDesktop"
     RequestedTheme="Light">
     <Application.Resources>
-        <Style x:Key="AutoSuggestBoxTextBoxStyle" TargetType="TextBox">
+        <!--<Style x:Key="AutoSuggestBoxTextBoxStyle" TargetType="TextBox">
             <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
             <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
@@ -241,7 +241,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
     </Application.Resources>
 
 </Application>

@@ -45,22 +45,40 @@ namespace GiddhDesktop.Common.Services
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            company str = (company)value;
-            if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
+            
+            if (value is company)
             {
-                return Visibility.Collapsed;
-            }
-            if (string.IsNullOrEmpty(str.sharedEntity))
-            {                
-                return Visibility.Visible;
+                var str = (company)value;
+                if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
+                {
+                    return Visibility.Collapsed;
+                }
+                if (string.IsNullOrEmpty(str.sharedEntity))
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    if (str.role.uniqueName.ToLower().Equals("view_only"))
+                        return Visibility.Collapsed;
+                    else
+                        return Visibility.Visible;
+                }
             }
             else
             {
-                if (str.role.uniqueName.ToLower().Equals("view_only"))
+                var str = (accountDetail)value;
+                if (string.IsNullOrEmpty(str.role.uniqueName) || str.role.uniqueName.ToLower().Equals("view_only"))
+                {
                     return Visibility.Collapsed;
+                }
                 else
+                {
                     return Visibility.Visible;
+                }
             }
+
+            
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
@@ -104,10 +122,56 @@ namespace GiddhDesktop.Common.Services
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value.ToString().Equals("0"))
+            if (value.ToString().Equals("0") && parameter == null)
+            {
                 return "Save";
+            }            
+            else if (parameter != null && parameter.ToString().Equals("total"))
+                return "Total " + value.ToString();
             else
                 return "Save all entries";
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class forwardedBalanceManipulation : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            balance bal = value as balance;
+            if (string.IsNullOrEmpty(bal.description))
+            {
+                bal.description = "C/F Balance";
+            }
+            else
+            {
+                if (bal.description.ToLower().Contains("bf_"))
+                {
+                    bal.description = "B/F Balance";
+                }
+                else if (bal.description.ToLower().Contains("cf_"))
+                {
+                    bal.description = "C/F Balance";
+                }
+                else if (bal.description.ToLower().Contains("open"))
+                {
+                    bal.description = "Opening Balance";
+                }
+            }
+            if (parameter.ToString().Equals("debit") && bal.type.ToLower().Equals("debit"))
+            {
+                return bal.description + " " + bal.amount;
+            }
+            else if (parameter.ToString().Equals("credit") && bal.type.ToLower().Equals("credit"))
+            {
+                
+                return bal.description + " " + bal.amount;
+            }
+            else
+                return "";
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
